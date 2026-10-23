@@ -1,0 +1,20 @@
+# Local source materials and derived records; this repository starts with discussion docs.
+raw/
+private/
+extracted/
+local-data/
+*.eml
+*.msg
+*.pst
+*.mbox
+*.ppt
+*.pptx
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+.env
+.env.*
+!.env.example
+.DS_Store
