@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Production Support Knowledge Hub · 维护与贡献讨论稿</title>
+<style>
+:root{--ink:#182e36;--muted:#53676d;--paper:#f4f3ed;--white:#fff;--line:#d8dfd9;--teal:#176953;--soft:#e3eee7;--amber:#79500c;--sand:#f5e9cc;--dark:#133c36}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.75}a{color:var(--teal);text-underline-offset:4px}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #b76b00;outline-offset:5px}h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.25;letter-spacing:-.035em}h1{font-size:clamp(38px,5vw,66px);font-weight:650;margin-bottom:24px}h2{font-size:clamp(27px,3vw,38px);margin-bottom:18px}h3{font-size:21px;margin-bottom:12px}p{margin-bottom:16px}.wrap{width:min(1160px,calc(100% - 64px));margin:auto}.skip{position:absolute;left:12px;top:-90px;padding:8px;background:white;z-index:5}.skip:focus{top:8px}.top{background:rgba(244,243,237,.97);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:3}.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px}.brand{font-size:14px;letter-spacing:.08em;font-weight:bold;white-space:nowrap}.brand span{color:var(--teal)}nav{display:flex;gap:22px;flex-wrap:wrap}nav a{color:var(--ink);font-size:14px;text-decoration:none}nav a:hover{text-decoration:underline}.hero{padding:64px 0 48px;display:grid;grid-template-columns:1.45fr 1fr;gap:56px;align-items:center}.eyebrow{font-size:12px;letter-spacing:.14em;font-weight:bold;text-transform:uppercase;color:var(--teal);margin-bottom:20px}.tag{display:inline-block;border-radius:4px;background:var(--sand);color:var(--amber);font-size:12px;padding:4px 10px;letter-spacing:.03em;margin-bottom:22px}.lead{font-size:19px;max-width:650px;color:var(--muted)}.hero-note{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:14px}.hero-map{background:var(--dark);color:#f3f4e9;border-radius:18px;padding:32px}.hero-map .eyebrow{color:#a5d3b9}.map-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.map-box{background:#285249;border:1px solid #4a7065;border-radius:8px;padding:14px 18px;flex:1;font-size:16px;min-width:120px}.map-box small{display:block;color:#c0d3c8;font-size:12px;margin-top:4px}.map-arrow{color:#c0d3c8;text-align:center;padding:8px;font-size:18px}.map-foot{font-size:13px;color:#c0d3c8;margin:20px 0 0}.intro-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;gap:30px}.intro-strip strong{display:block;margin-bottom:6px}.intro-strip p{font-size:14px;color:var(--muted);margin:0}.section{padding:64px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;gap:28px;align-items:baseline;margin-bottom:24px}.num{font-family:Georgia,serif;font-size:32px;color:var(--teal);flex:none}.section-head p{color:var(--muted);max-width:780px;margin-bottom:0}.scenario-layout{display:grid;grid-template-columns:270px 1fr;gap:28px}.scenario-buttons{display:flex;flex-direction:column;gap:8px}.scenario-buttons button{background:transparent;border:1px solid var(--line);border-radius:8px;text-align:left;padding:14px 16px;color:var(--ink);min-height:52px}.scenario-buttons button[aria-pressed="true"]{background:var(--dark);border-color:var(--dark);color:#fff}.scenario-buttons button small{display:block;font-size:12px;opacity:.8}.scenario{padding:30px;background:var(--white);border:1px solid var(--line);border-radius:12px}.scenario .label{font-size:12px;color:var(--teal);letter-spacing:.08em;margin-bottom:10px}.scenario h3{font-size:27px}.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;margin-top:24px}.scenario-grid strong{font-size:14px}.scenario-grid p{font-size:15px;color:var(--muted);margin:7px 0 0}.callout{border-left:3px solid var(--teal);background:var(--soft);padding:17px 22px;margin-top:22px;font-size:14px}.callout p:last-child{margin-bottom:0}[hidden]{display:none!important}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px;text-align:left}th{color:var(--muted);font-weight:600;font-size:12px;letter-spacing:.05em;padding:14px 16px;background:#e9ede7}td{padding:17px 16px;vertical-align:top;border-bottom:1px solid var(--line)}td:first-child{font-weight:600;min-width:135px}td p{margin:0}.hint{font-size:13px;color:var(--muted);margin-top:16px}.two{display:grid;grid-template-columns:1fr 1fr;gap:30px}.block{padding:28px;background:var(--white);border:1px solid var(--line);border-radius:12px}.block ul{padding-left:20px;margin-bottom:0}.block li{margin:10px 0;font-size:15px}.small-label{font-size:12px;color:var(--teal);font-weight:bold;letter-spacing:.08em;margin-bottom:10px}.steps{list-style:none;padding:0;margin:30px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.steps li{border-top:3px solid var(--teal);padding:18px 6px 0}.steps span{font-family:Georgia,serif;font-size:23px;color:var(--teal)}.steps strong{display:block;margin:6px 0 10px}.steps p{font-size:14px;color:var(--muted);margin:0}.lifecycle{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:25px 0}.state{padding:9px 14px;border:1px solid var(--line);background:white;border-radius:6px;font-size:14px}.state.active{background:var(--soft);color:var(--teal);border-color:#a8c3ae}.arrow{color:var(--muted)}.sop-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}.sop-fields p{border-top:1px solid var(--line);padding-top:14px;font-size:14px}.sop-fields strong{display:block;margin-bottom:4px}.dark-panel{background:var(--dark);padding:32px;border-radius:12px;color:#f3f4e9}.dark-panel p,.dark-panel li{color:#c4d6cc}.dark-panel .small-label{color:#a5d3b9}.dark-panel ul{padding-left:20px}.dark-panel a{color:#d2ead9}.evidence-chain{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}.evidence-chain div{border-left:2px solid var(--teal);padding:0 15px}.evidence-chain strong{display:block;margin-bottom:8px}.evidence-chain p{font-size:14px;color:var(--muted)}details{border-bottom:1px solid var(--line);padding:19px 0}summary{font-size:17px;cursor:pointer;font-weight:600}details p{margin:15px 0 0;color:var(--muted);font-size:15px}.decision-row{display:grid;grid-template-columns:65px 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line)}.decision-row a{font-size:13px}.decision-row p{margin:5px 0 0;color:var(--muted);font-size:14px}.footer{padding:35px 0 50px;display:flex;justify-content:space-between;gap:30px;color:var(--muted);font-size:13px}.footer p{margin:0}.print-button{background:var(--ink);color:white;border:0;border-radius:7px;padding:11px 18px;min-height:44px}.print-button:hover{background:var(--teal)}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:24px}.hero-map{max-width:620px}.top .wrap{align-items:flex-start;padding:16px 0;gap:14px;flex-direction:column}.scenario-layout{grid-template-columns:1fr}.scenario-buttons{display:grid;grid-template-columns:repeat(3,1fr)}.steps,.evidence-chain{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.wrap{width:calc(100% - 36px)}.top{position:static}nav{gap:13px}nav a{font-size:12px}.hero{padding-top:32px}.section{padding:40px 0}.section-head{gap:16px}.intro-strip,.two,.scenario-grid,.sop-fields{grid-template-columns:1fr}.scenario-buttons{grid-template-columns:1fr 1fr}.scenario,.block,.dark-panel{padding:22px}.steps,.evidence-chain{grid-template-columns:1fr}.footer{flex-direction:column}.hero-map{padding:23px}.table-wrap table{min-width:660px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{body{background:white;font-size:11pt}.wrap{width:100%}.top{position:static}.top nav,.scenario-buttons,.print-button{display:none}.hero{padding:20px 0;grid-template-columns:1.3fr 1fr;gap:24px}h1{font-size:32px}h2{font-size:25px}.section{padding:25px 0}.scenario-layout{display:block}.scenario[hidden]{display:block!important}.scenario{margin-bottom:15px;break-inside:avoid}.section-head{break-after:avoid}.two{grid-template-columns:1fr 1fr}.block,.dark-panel,.intro-strip{break-inside:avoid}.table-wrap{overflow:visible}.table-wrap table{min-width:0}tr{break-inside:avoid}.hero-map,.dark-panel,.scenario-buttons button{-webkit-print-color-adjust:exact;print-color-adjust:exact}.footer{padding:20px 0}details p{display:block}a{color:inherit}}
+#ff-demo .demo-toolbar{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:22px}#ff-demo .demo-status{font-size:13px;color:var(--muted)}#ff-demo .demo-progress{display:grid;grid-template-columns:repeat(5,1fr);list-style:none;padding:0;margin:0 0 26px;gap:10px}#ff-demo .demo-progress li{border-top:3px solid var(--line);padding-top:10px;font-size:14px;color:var(--muted)}#ff-demo .demo-progress li[aria-current="step"]{border-color:var(--teal);color:var(--teal);font-weight:bold}#ff-demo pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--dark);color:#e0eee6;padding:22px;border-radius:10px;font:13px/1.85 ui-monospace,SFMono-Regular,Consolas,monospace;margin:18px 0}#ff-demo .demo-choice{border:1px solid var(--line);background:white;border-radius:8px;padding:14px 16px;color:var(--ink);text-align:left;min-height:48px}#ff-demo .demo-choice[aria-pressed="true"]{border-color:var(--teal);background:var(--soft);box-shadow:inset 3px 0 var(--teal)}#ff-demo .demo-choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}#ff-demo .demo-actions{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-top:28px;flex-wrap:wrap}#ff-demo .demo-action{border:1px solid var(--line);border-radius:7px;padding:11px 18px;background:white;color:var(--ink);min-height:46px}#ff-demo .demo-action.primary{background:var(--teal);border-color:var(--teal);color:white}#ff-demo button:disabled{opacity:.45;cursor:not-allowed}#ff-demo .demo-evidence{margin-top:24px}#ff-demo .demo-evidence p{color:var(--ink)}#ff-demo .demo-summary{padding:16px 20px;background:var(--soft);border-left:3px solid var(--teal);margin:18px 0}#ff-demo .demo-output{padding:24px;border:1px solid var(--line);background:white;border-radius:10px}#ff-demo .demo-output dl{margin:0}#ff-demo .demo-output dt{font-weight:bold;font-size:14px;margin-top:15px}#ff-demo .demo-output dd{margin:4px 0 0;font-size:15px;color:var(--muted)}#ff-demo .demo-cases{display:grid;grid-template-columns:1fr 1fr;gap:20px}#ff-demo .demo-source{font-size:13px}#ff-demo .demo-panel h3{font-size:27px}#ff-demo .demo-choice small{display:block;margin-top:5px}#ff-demo .demo-caption{font-size:13px;color:var(--muted);margin:12px 0 0}
+@media(max-width:600px){#ff-demo .demo-choices,#ff-demo .demo-cases{grid-template-columns:1fr}#ff-demo .demo-progress{gap:6px}#ff-demo .demo-progress li{font-size:12px}#ff-demo pre{padding:15px;font-size:12px}#ff-demo .demo-output{padding:18px}}
+@media print{#ff-demo .demo-toolbar button,#ff-demo .demo-actions,#ff-demo .demo-choices{display:none}#ff-demo .demo-panel{break-inside:avoid}#ff-demo .demo-progress{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="top"><div class="wrap"><div class="brand"><span>PS /</span> KNOWLEDGE HUB</div><nav aria-label="页面导航"><a href="#ff-demo">虚构演示</a><a href="#scenarios">日常场景</a><a href="#structure">知识组织</a><a href="#contribute">如何贡献</a><a href="#maintain">怎样维护</a><a href="#decisions">待讨论</a></nav></div></header>
+<main id="main" class="wrap">
+<section class="hero" aria-labelledby="title">
+<div><span class="tag">共同设计讨论稿 · 2026.10.24 · 尚未批准实施</span><p class="eyebrow">Lending Incident Wiki / Proposed evolution</p><h1 id="title">把每一次支持，<br>变成下一次的经验。</h1><p class="lead">面向所有 FFer 的 production support 知识库：从日常 FF log、问题排查与事故复盘中积累经验，形成可复用的 SOP，并把教训带入新系统设计与验证。</p><p class="hero-note">已确认的现有流程：生产问题触发 alert → 值班人员收到消息或电话 → 处理并写日志 → 发给所有值班同事。本页讨论如何在此基础上持续积累知识；仓库仍只有讨论方案、空白模板与虚构演示。</p></div>
+<div class="hero-map" aria-label="建议的知识积累路径"><p class="eyebrow">Daily work → Shared knowledge</p><div class="map-row"><div class="map-box">日常 FF log<small>观察 · 排查 · 处理 · 交接</small></div></div><div class="map-arrow" aria-hidden="true">↓ 筛选、关联与复核</div><div class="map-row"><div class="map-box">问题与经验<small>可复用的处理方法</small></div><div class="map-box">INC / RCA<small>有事故时完整复盘</small></div></div><div class="map-arrow" aria-hidden="true">↓ 验证与沉淀</div><div class="map-row"><div class="map-box">SOP / Runbook<small>日常支持可以复用</small></div><div class="map-box">设计 / 验证<small>新系统避免重蹈覆辙</small></div></div><p class="map-foot">使用后的反馈回到记录与修订。并非每条 log 都需要成为事故或 SOP。</p></div>
+</section>
+<div class="intro-strip"><div><strong>每个人都能贡献</strong><p>记录现场事实、补充证据、反馈 SOP 问题；贡献入口应适配不同 Git 熟练程度。</p></div><div><strong>成熟度清楚可见</strong><p>保留待核实的线索，同时把经过复核的操作知识单独标明。</p></div><div><strong>经验可以被再次使用</strong><p>按业务、症状、系统和操作任务查找，关联来源、适用版本及负责人。</p></div></div>
+
+<section id="ff-demo" class="section" aria-labelledby="demo-title">
+<div class="section-head"><span class="num">↳</span><div><p class="eyebrow">Interactive walkthrough / Fictional data only</p><h2 id="demo-title">走一遍：从报错到共享经验。</h2><p>虚构情境：报表导出批任务重启后提示运行锁冲突。FFer 希望尽快恢复任务，同时避免重复生成报表。</p></div></div>
+<div class="demo-toolbar"><span class="tag" style="margin:0">全部虚构 · 内置脚本演示 · 不调用 agent / API</span><button type="button" class="demo-action" id="demo-reset">重新演示</button></div>
+<p class="hint">日志、case、SOP、版本、检查结果均为演示材料，与 AMH / HASE 实际事故无关。本页不能粘贴或上传真实日志，按钮只改变本页显示，不执行操作、不发送消息、不写入仓库；刷新即重置。</p>
+<ol class="demo-progress" aria-label="演示进度"><li aria-current="step">1 · 给出日志</li><li>2 · 对比 case</li><li>3 · 补救建议</li><li>4 · 处理反馈</li><li>5 · 知识沉淀</li></ol>
+<p id="demo-status" class="demo-status" role="status" tabindex="-1">第 1 / 5 步：查看内置报错日志，然后模拟交给 agent。</p>
+
+<div class="demo-panel" id="demo-step-0">
+<h3>FFer：任务重启后一直失败，下一步怎么处理？</h3>
+<p>演示上下文：隔离的 demo 环境、report-exporter v2.4、任务 DEMO-JOB-042。已知发生过 worker 重启，但旧任务是否仍在运行尚未确认。</p>
+<pre aria-label="虚构日志 DEMO-LOG-001，共七行">L01  [09:15:00+08:00] env=demo service=report-exporter version=2.4
+L02  [09:15:01+08:00] job=DEMO-JOB-042 worker=demo-worker-new event=START
+L03  [09:15:01+08:00] event=LEASE_BUSY owner=demo-worker-old lease=DEMO-LEASE-07
+L04  [09:15:01+08:00] checkpoint=DEMO-CP-06 output_state=UNKNOWN
+L05  [09:15:02+08:00] retry=1 result=LEASE_BUSY
+L06  [09:15:04+08:00] retry=2 result=LEASE_BUSY
+L07  [09:15:04+08:00] event=JOB_BLOCKED processed_this_attempt=0</pre>
+<div class="callout"><strong>本次输入：</strong>DEMO-LOG-001 的 L01–L07，是完整的七行演示输入，不代表完整系统遥测。日志没有证明旧任务已退出，也没有证明业务输出完整；这些需要补充检查。</div>
+</div>
+
+<div class="demo-panel" id="demo-step-1" hidden>
+<h3>Agent：错误相同，补救方法可能相反。</h3>
+<p>模拟检索条件：<strong>report-exporter v2.4 + LEASE_BUSY + 重启后阻塞</strong>。下列结果预置在页面中，并非真实搜索；可展开下方“虚构证据库”查看原文。</p>
+<div class="demo-cases"><div class="block"><p class="small-label">优先候选 · 需要补充检查</p><h3>旧任务已退出，运行锁残留</h3><p><a href="#demo-case-017">DEMO-CASE-017 v2，§1–3</a>：相同服务版本和重启背景；历史例中已确认无活动 owner，随后使用受控恢复流程。</p><p class="hint">本次差异：L03 只能看到锁的 owner，不能证明它已退出。需要核对活动任务和输出检查点。</p></div><div class="block"><p class="small-label">反例 · 不能按错误码直接套方案</p><h3>旧任务仍在运行，锁正在生效</h3><p><a href="#demo-case-029">DEMO-CASE-029 v1，§1–2</a>：同样是 LEASE_BUSY，但原任务仍在处理；清锁会允许并发启动。</p><p class="hint">这时应保留运行锁，观察原任务；异常持续则升级，不再启动第二个任务。</p></div></div>
+<p class="hint">排除的操作依据：<a href="#demo-sop-old">DEMO-SOP-OLD v1</a> 已退役且仅适用于 v1.x，不能因为匹配关键字就推荐使用。</p>
+<h3 style="margin-top:28px">只补一个关键检查结果</h3><p>先只读核对：旧 owner 是否仍活动、检查点是否一致、是否已有部分输出。选择一个预置结果继续。</p>
+<div class="demo-choices" role="group" aria-label="选择虚构检查结果">
+<button type="button" class="demo-choice" data-demo-check="eligible" aria-pressed="false">模拟：旧任务已退出，检查点和输出核对一致<small>DEMO-CHECK-A：无活动 owner；已有输出与 CP-06 对应。</small></button>
+<button type="button" class="demo-choice" data-demo-check="active" aria-pressed="false">模拟：旧任务仍在运行<small>DEMO-CHECK-B：心跳及处理进度仍更新，暂不能清锁或重复启动。</small></button>
+</div>
+</div>
+
+<div class="demo-panel" id="demo-step-2" hidden>
+<h3 id="demo-plan-title">补救建议</h3><div class="demo-summary" id="demo-plan-summary"></div>
+<div id="demo-plan-eligible" hidden><p><strong>依据：</strong><a href="#demo-case-017">DEMO-CASE-017 v2 §2–3</a>、<a href="#demo-sop-004">DEMO-SOP-004 v3 §1–4</a>，以及补充的 DEMO-CHECK-A。推荐的是当前演示条件下的受控恢复；运行锁未释放的触发原因仍待调查。</p><ol><li>由 FFer 按既有授权再次核对任务 ID、无活动 owner 和输出检查点；条件变化则停止。</li><li>按照虚构 SOP 的受控恢复流程释放该任务的残留锁，并从 CP-06 恢复一次。此处仅展示建议，不提供或执行真实命令。</li><li>核对任务状态与业务输出：完成状态、输出清单一致、没有重复产物。告警消失本身不足以判定恢复。</li></ol><div class="callout"><strong>失败路径：</strong>若再次冲突或输出不一致，停止继续恢复，不循环重试。保留当前检查点与输出证据，交由任务 owner 按既有恢复流程处理；本例没有已验证的自动回退方案，不建议自行删除产物。</div></div>
+<div id="demo-plan-active" hidden><p><strong>依据：</strong><a href="#demo-case-029">DEMO-CASE-029 v1 §1–2</a> 和 DEMO-CHECK-B。L07 的新尝试阻塞不代表旧任务停止。</p><ol><li>保留运行锁，不清锁、不再次启动；继续只读观察旧任务进度和业务输出。</li><li>如果原任务按计划推进，记录本次重复启动被阻止的情况；完成后再核对输出。</li><li>若进度停滞、超出已有处理窗口或状态无法确认，按既有流程升级给任务 owner；重新收集证据后再判断。</li></ol><div class="callout"><strong>为何不推荐残留锁方案：</strong>DEMO-SOP-004 要求无活动 owner，本分支不满足。不能为了尽快给出修复动作而绕过这个条件。</div></div>
+</div>
+
+<div class="demo-panel" id="demo-step-3" hidden>
+<h3>FFer：把实际结果反馈给 agent。</h3><p>这里只选择预置模拟结果，不表示已操作任何系统。实际工作中继续使用原 FF log／工单，记录采取的动作及观察结果。</p>
+<div id="demo-feedback-eligible" hidden><p>假设 FFer 在演示环境按 DEMO-SOP-004 v3 的授权流程进行了单次恢复，选择一种结果：</p><div class="demo-choices" role="group" aria-label="选择虚构处理结果"><button type="button" class="demo-choice" data-demo-outcome="recovered" aria-pressed="false">模拟：完成且输出核对一致<small>09:22 任务完成；输出清单符合预期；无重复产物。</small></button><button type="button" class="demo-choice" data-demo-outcome="failed" aria-pressed="false">模拟：再次冲突，恢复未完成<small>09:22 仍为 LEASE_BUSY；已停止重试并保留证据。</small></button></div></div>
+<div id="demo-feedback-active" hidden><div class="demo-summary">预置反馈：未清锁、未重复启动；09:22 旧任务仍在处理。已交由任务 owner 跟进，业务恢复与完成情况待确认。</div><p>没有成功恢复的证据，本分支只能沉淀“观察与升级”的记录，不能写成已解决 case。</p></div>
+</div>
+
+<div class="demo-panel" id="demo-step-4" hidden>
+<h3>Agent：引用原记录，只补处理结果与关联。</h3><p>下方是按你的选择生成的<strong>虚构草稿预览</strong>。没有新建工单、发送日志、提交 PR 或写入知识库；领域复核和发布尚未发生。</p>
+<div class="demo-output"><p class="small-label">DEMO-FF-042 · 原处理日志的补充预览 · 待核实</p><dl><dt>已有事实直接引用</dt><dd>DEMO-LOG-001 L01–L07：任务版本、报错、两次失败重试及 CP-06；不重复抄写原日志。</dd><dt>本次检查</dt><dd id="demo-draft-check"></dd><dt>实际动作与结果（模拟）</dt><dd id="demo-draft-result"></dd><dt>关联证据</dt><dd id="demo-draft-sources"></dd><dt>尚未确认</dt><dd id="demo-draft-unknown"></dd></dl></div>
+<div class="two" style="margin-top:22px"><div class="block"><p class="small-label">知识改动预览 · 待领域复核</p><h3>更新既有 case / SOP</h3><p id="demo-draft-knowledge"></p><p class="hint">建议不直接变成已审核 SOP；保留原版本、适用范围和验证证据。没有重复创建一套处理报告。</p></div><div class="block"><p class="small-label">设计借鉴 · 可选线索</p><h3>新平台怎样避免同类困难？</h3><p id="demo-draft-design"></p><p class="hint">转为设计候选项前需核实历史证据并结合目标架构，演示不代表 HCC 已存在此问题。</p></div></div>
+<div class="callout"><strong>闭环：</strong>本次日志与反馈 → 待核实 FF log 补充 → case 关联与 SOP 修订建议 → 领域复核 → 获准后发布。下一位 FFer 才能在适用范围内复用审核后的内容。</div>
+</div>
+
+<div class="demo-actions"><button type="button" class="demo-action" id="demo-back" disabled>上一步</button><button type="button" class="demo-action primary" id="demo-next">模拟：把示例 log 交给 agent</button></div>
+<p class="demo-caption">演示采用预置分支，展示期望工作方式；不代表 agent 检索能力、推荐准确率或真实补救效果已经验证。</p>
+<details class="demo-evidence" id="demo-evidence"><summary>查看虚构证据库：case 与 SOP 的引用原文</summary>
+<div id="demo-case-017"><p><strong>DEMO-CASE-017 v2 · 虚构 case</strong></p><p>§1：report-exporter v2.4 在 worker 重启后返回 LEASE_BUSY。§2：当时已确认旧 owner 退出，CP-06 与已有输出一致。§3：按 DEMO-SOP-004 v3 的受控流程单次恢复后，任务完成且无重复输出。锁残留的触发机制未被完整确认。</p></div>
+<div id="demo-case-029"><p><strong>DEMO-CASE-029 v1 · 虚构反例</strong></p><p>§1：report-exporter v2.4 的第二次启动返回 LEASE_BUSY；旧 owner 心跳与进度仍更新。§2：保留锁并观察原任务，未清锁或并发启动；状态异常则交任务 owner 跟进。</p></div>
+<div id="demo-sop-004"><p><strong>DEMO-SOP-004 v3 · 虚构 SOP</strong></p><p>§1：示例设定中已审核，仅适用于 demo 服务 v2.4；需原有操作授权、无活动 owner、检查点及输出一致。§2：再次核对前提后，通过既有受控恢复流程解除任务残留锁并恢复一次。§3：任务完成、输出清单符合预期且无重复产物才算恢复。§4：再次冲突或输出不一致时停止；保留证据并升级，无自动回退方案。这里没有可执行命令。</p></div>
+<div id="demo-sop-old"><p><strong>DEMO-SOP-OLD v1 · 虚构已退役 SOP</strong></p><p>仅适用 demo 服务 v1.x，检索关键词包含 LEASE_BUSY，但已退役。不得作为本次操作依据。</p></div>
+</details>
+<noscript><p>此演示需要启用 JavaScript 才能逐步切换。上述日志和虚构证据仍可阅读；页面不会进行网络请求。</p></noscript>
+</section>
+
+<section id="scenarios" class="section"><div class="section-head"><span class="num">01</span><div><h2>FFer 的一天，怎么用？</h2><p>点击场景查看建议流程。以下均为通用使用情境，不是已发生的内部事件。</p></div></div>
+<div class="scenario-layout"><div class="scenario-buttons" role="group" aria-label="选择日常使用场景">
+<button type="button" aria-pressed="true" aria-controls="scene-agent" data-scene="agent">把报错日志交给 agent<small>查历史 case，得到补救建议</small></button>
+<button type="button" aria-pressed="false" aria-controls="scene-handover" data-scene="handover">接班与日常检查<small>知道今天该关注什么</small></button>
+<button type="button" aria-pressed="false" aria-controls="scene-triage" data-scene="triage">遇到告警或业务问题<small>先查已有经验，再记录差异</small></button>
+<button type="button" aria-pressed="false" aria-controls="scene-log" data-scene="log">整理 / 导入 FF log<small>把日常记录变成可追溯线索</small></button>
+<button type="button" aria-pressed="false" aria-controls="scene-incident" data-scene="incident">事故处理与复盘<small>恢复之后，把原因和行动留下</small></button>
+<button type="button" aria-pressed="false" aria-controls="scene-sop" data-scene="sop">重复任务与新人学习<small>使用并改进经过复核的 SOP</small></button>
+<button type="button" aria-pressed="false" aria-controls="scene-design" data-scene="design">新系统设计与验证<small>让历史经验进入设计输入</small></button>
+</div><div id="scenario-content" aria-live="polite">
+<article class="scenario" id="scene-agent"><p class="label">新增场景 · 现场排障助手 · 待设计</p><h3>给出现场日志，得到有依据的补救建议。</h3><p>FFer 在获准环境提供本次完整报错日志或受控来源。agent 基于 repo 中的 FF case、INC / RCA 和 SOP，说明“建议先做什么、为什么适用、如何确认有效”。</p><div class="scenario-grid"><div><strong>① 理解本次问题</strong><p>定位报错、时间线与组件；复用告警上下文，只补问影响方案选择的信息。日志缺段或未读完时明确说明覆盖范围。</p></div><div><strong>② 快速查历史 case</strong><p>列出相关 case / SOP、版本与状态，解释相似点和关键差异。相同错误码不直接等于相同根因。</p></div><div><strong>③ 给出首选与备选</strong><p>在当前证据下，按适用条件、业务影响和可恢复性推荐方案，说明备选切换条件；不承诺唯一最优或必然恢复。</p></div><div><strong>④ 先检查，再补救</strong><p>先做能区分原因的只读检查，再给出有适用依据的补救步骤、预期结果和业务恢复判据。</p></div><div><strong>⑤ 无依据或操作失败</strong><p>没有适用 case、关键条件缺失时，明确暂不能可靠推荐；提供必要检查。补救步骤须说明停止、回退／恢复及升级路径。</p></div><div><strong>⑥ 结果回到 FF log</strong><p>FFer 按既有授权决定并执行操作；实际动作、结果和偏差仍写原日志／工单，关联建议及知识版本，不另写报告。</p></div></div><div class="callout"><strong>两种日志：</strong>输入是现场系统报错日志，处理后输出的是 FF log。当前页面只讨论能力，不接收日志、不自动修复；完整日志的处理环境和权限待 D-06 确认，临时分析不等于自动入库。</div><p class="hint">建议回答顺序：当前判断与首选建议 → 历史依据及差异 → 必要检查 → 补救与验证 → 失败处理／备选 → 未知项。详见 <a href="design.md">设计细节</a>。</p></article>
+<article class="scenario" id="scene-handover" hidden><p class="label">场景 A · 接班 / 开始一天的工作</p><h3>从未完成事项进入，看到相关知识。</h3><p>查看本班相关服务、交接记录和未闭合问题，再进入适用的检查清单或 SOP。</p><div class="scenario-grid"><div><strong>查什么</strong><p>上班遗留项、已知问题、近期变更关联及已审核 SOP 的适用范围。</p></div><div><strong>做什么</strong><p>核对现有工单中的实时状态，按已有值班流程检查；知识库给出背景和操作依据。</p></div><div><strong>留下什么</strong><p>补充观察结果、后续动作、负责人及交接链接；注明记录时间。</p></div><div><strong>什么时候需要贡献</strong><p>检查步骤缺失、信息过时，或发现其他同事需要知道的新情况。</p></div></div><div class="callout">现有工单／值班平台继续作为实时任务状态来源；知识库保存经验和关联，不再维护一套独立的值班队列。</div></article>
+<article class="scenario" id="scene-triage" hidden><p class="label">场景 B · 告警 / 业务咨询 / 异常排查</p><h3>找到相似问题，确认是否适用。</h3><p>从业务流程、症状、错误特征和组件找到相关问题、事故与 SOP；相似症状仅作为排查线索。</p><div class="scenario-grid"><div><strong>查什么</strong><p>适用版本、前置条件、已知故障模式、诊断步骤及升级联系角色。</p></div><div><strong>做什么</strong><p>先检查条件是否匹配，再遵循现有操作权限和支持流程；不确定时升级处理。</p></div><div><strong>留下什么</strong><p>观察到的事实、已尝试步骤、结果、无效尝试及证据位置。</p></div><div><strong>如何形成知识</strong><p>新现象建立问题记录；已有方法的差异作为 SOP 修订建议；符合现有事故标准时关联 INC。</p></div></div><div class="callout">不能把历史 RCA 直接当作本次根因。待确认假设与已确认事实分开保存。</div></article>
+<article class="scenario" id="scene-log" hidden><p class="label">场景 C · 处理日志 / 后续整理</p><h3>同事已收到日志，经验还需要可检索、可复用。</h3><p>FF log 是值班人员响应生产 alert、消息或电话后编写，并发给所有值班同事的处理日志。这条现有共享流程继续保留；建议从获准的日志来源整理知识，减少重复录入。</p><div class="scenario-grid"><div><strong>建议提取字段</strong><p>原记录 ID、时间与时区、业务／系统、告警或来电现象、处理动作、结果、后续事项、来源位置及版本；实际字段待核对。</p></div><div><strong>关联与去重</strong><p>区分告警、处理日志、问题和 INC。保留来源 ID；识别重发／转发和重复导入，人工确认多次告警是否涉及同一问题。</p></div><div><strong>人工确认</strong><p>导入后核对条数、字段、来源定位、遗漏、重复与冲突。处理成功不等于根因已确认。</p></div><div><strong>分流结果</strong><p>普通日志可归档；可复用经验进入问题记录；事故链接 INC；可操作方法提出 SOP 草稿。</p></div></div><div class="callout">导入为待设计能力。本页不接收文件。日志格式、保存与发送渠道尚待确认；真实日志只有在处理环境、目标存储及权限获准后才可处理，先核对代表性样本再扩量。</div></article>
+<article class="scenario" id="scene-incident" hidden><p class="label">场景 D · INC / RCA</p><h3>保留一份事故事实，沉淀多种后续用途。</h3><p>紧急处置遵循现有事故流程；恢复后归并邮件、PPT、日志与工单，维护事故时间线和 RCA 版本。</p><div class="scenario-grid"><div><strong>复盘内容</strong><p>业务影响、触发因素、根因、促成因素、故障传播过程及当时依赖。</p></div><div><strong>来源规则</strong><p>同一事故稳定 ID，多份来源共同引用；冲突保留，权威版本由领域负责人确认。</p></div><div><strong>沉淀输出</strong><p>相关故障模式、诊断或恢复 SOP 候选、整改工单及迁移设计问题。</p></div><div><strong>跟踪结果</strong><p>工单关闭与整改有效性分开；RCA 修订时检查关联 SOP、设计判断和验证场景。</p></div></div><div class="callout">没有 RCA 的事故也保留。FF log 条数、独立问题数与事故数是不同指标，不能直接互相替代。</div></article>
+<article class="scenario" id="scene-sop" hidden><p class="label">场景 E · 重复任务 / 学习与演练</p><h3>让另一个 FFer 也能正确使用。</h3><p>按任务找到经过复核的 SOP，确认系统版本、适用条件、操作权限和停止条件后再使用。</p><div class="scenario-grid"><div><strong>读之前</strong><p>检查状态、负责人、最近验证时间；区分草稿、已审核、待复核和已退役。</p></div><div><strong>操作时</strong><p>按步骤核对预期结果；结果不符时停止或升级，遵循原有授权及变更要求。</p></div><div><strong>反馈时</strong><p>关联 SOP 版本，记录适用环境、实际结果、偏差和修订建议。</p></div><div><strong>复用价值</strong><p>用于日常支持、新人学习及获准环境内的演练，减少重复摸索。</p></div></div><div class="callout">一次处理成功只提供候选经验。SOP 发布前需明确适用边界并由具备领域能力的人员复核验证；不保证因此完全避免复发。</div></article>
+<article class="scenario" id="scene-design" hidden><p class="label">场景 F · HCC modernisation / 设计评审</p><h3>从历史机制得到设计问题与验证场景。</h3><p>系统核心从 IBM iSeries 迁移至开放平台时，按业务流程、依赖和故障模式查询历史经验。</p><div class="scenario-grid"><div><strong>提取设计输入</strong><p>哪些业务约束仍然存在？旧平台承担了什么控制？哪些日常操作暴露出可改进点？</p></div><div><strong>记录设计判断</strong><p>把历史事实独立关联目标设计版本，说明控制如何保留、替换或重新验证。</p></div><div><strong>提出验证场景</strong><p>明确前置条件、触发方式、预期业务效果及观察方法，由业务与架构负责人确认。</p></div><div><strong>回流支持知识</strong><p>新平台验证完成后更新适用的 SOP 和系统说明，保留旧版本及退役关系。</p></div></div><div class="callout">日常日志可以提出设计线索；升级为设计依据前需核实证据。更换平台不自动说明故障机制已消除。</div></article>
+</div></div></section>
+
+<section id="structure" class="section"><div class="section-head"><span class="num">02</span><div><h2>知识怎么放，才找得到、连得起来？</h2><p>保留日常记录的轻量入口，再通过稳定 ID 关联问题、事故、操作方法和设计证据。</p></div></div>
+<div class="table-wrap"><table><caption class="hint">建议的知识类型；以下是逻辑组织方式，尚未创建生产知识目录。</caption><thead><tr><th scope="col">知识类型</th><th scope="col">记录什么</th><th scope="col">与其他内容的关系</th><th scope="col">谁维护（建议）</th></tr></thead><tbody>
+<tr><td>FF log / 工作记录</td><td>事实、操作、结果、后续动作与原始来源</td><td>多条记录可关联同一问题；一次导入不等于一次事故</td><td>记录者贡献，轮值整理人归并</td></tr>
+<tr><td>问题 / 支持经验</td><td>症状、条件、排查方法、结论与未知事项</td><td>引用 log；关联已知问题、变更、INC 或 SOP</td><td>领域负责人</td></tr>
+<tr><td>INC / RCA</td><td>唯一事故、时间线、影响、因果及整改证据</td><td>引用多份来源；支撑故障模式和改造候选项</td><td>事故及系统负责人</td></tr>
+<tr><td>SOP / Runbook</td><td>适用边界、可执行步骤、检查点、停止与恢复方式</td><td>引用经验来源；记录验证证据及使用反馈</td><td>SOP owner + 领域复核人</td></tr>
+<tr><td>业务 / 系统 / 故障模式索引</td><td>可导航的知识入口及关联依据</td><td>链接原记录，不复制一套事实；模式关联注明确认状态</td><td>领域负责人 + repo 维护者</td></tr>
+<tr><td>设计与验证证据</td><td>历史控制、目标设计决定、场景及执行证据</td><td>多对多关联事故、问题和 SOP；绑定目标版本</td><td>架构、业务及验证负责人</td></tr>
+</tbody></table></div>
+<div class="two" style="margin-top:26px"><div class="block"><p class="small-label">建议的查找方式</p><h3>从工作问题进入</h3><p>“这个症状以前出现过吗？”“这个任务该怎么做？”“这个系统有哪些已知风险？”</p><p class="hint">共同字段：业务／系统、标签、稳定 ID、来源、确认状态、owner、更新时间及适用版本。年份与 AMH/HASE 用于筛选，不要求只靠目录定位。</p></div><div class="block"><p class="small-label">真实资料存放边界</p><h3>Repo 保存什么，需要单独确认</h3><p>当前 GitHub 仓库继续保存讨论材料、空白模板和虚构演示。未来原始日志与敏感派生知识，应放在获准环境；索引、摘要和 SOP 本身也要检查访问范围。</p><p class="hint">“所有 FFer 可参与”不等于所有人能看所有来源。派生知识沿用相应权限；仓库私有和 .gitignore 都不是资料上传许可。</p></div></div>
+</section>
+
+<section id="contribute" class="section"><div class="section-head"><span class="num">03</span><div><h2>怎么贡献，才能进入日常工作？</h2><p>先让同事容易留下事实，再由明确的负责人把可复用内容整理成知识。以下入口与角色是建议，尚未配置。</p></div></div>
+<div class="two"><div class="block"><p class="small-label">入口 A · 所有 FFer</p><h3>现有处理日志，就是贡献起点</h3><p>继续处理问题、写 FF log 并发给值班同事。后续整理从获准来源提取事实、处理结果与证据，再请记录者补充缺失信息。</p><p class="hint">不要求再写一份完整 Wiki 或先学习 Git。纠错可通过获准的现有反馈渠道提交，由维护者代建变更并保留贡献者和来源；具体渠道待确认。</p></div><div class="block"><p class="small-label">入口 B · 熟悉 Git 的贡献者</p><h3>提出可复核的变更</h3><p>先检索既有记录 → 更新既有页面或建立草稿 → 提交 PR → 领域复核 → 维护者合并。</p><p class="hint">PR 说明改变了什么、依据和适用范围、影响哪些关联内容。当前仓库只允许本任务授权的讨论材料；真实知识贡献入口待 D-06 确认。</p></div></div>
+<p class="hint">已有讨论稿空白模板：<a href="../templates/ff-log.md">FF log 记录模板</a>用于引用原日志、仅补缺口；<a href="../templates/sop.md">SOP / Runbook 模板</a>由整理人／Owner 提炼并安排复核。使用结果继续记录在原 FF log／工单，关联 SOP ID 与版本即可，无需重复填写报告。</p>
+<ol class="steps"><li><span>1 / Capture</span><strong>提交与定位</strong><p>保留来源、作者、时间与版本；资料缺失也可以记录，明确标为待核实。</p></li><li><span>2 / Curate</span><strong>筛选与关联</strong><p>核对重复、归属和权限，关联已有问题；普通记录可归档，无需全部升格。</p></li><li><span>3 / Review</span><strong>领域复核</strong><p>核对事实及操作边界。SOP 需有验证依据；AI 草稿不能自行变成已审核内容。</p></li><li><span>4 / Reuse</span><strong>发布与反馈</strong><p>维护者合并获准内容，保留变更记录；使用反馈链接到具体版本，持续修订。</p></li></ol>
+<div class="callout"><strong>LLM 的建议职责：</strong>辅助提取、分类、关联、起草、检查失效链接，并结合现场日志与历史知识提出有依据的补救建议。统计按固定口径计算；根因、SOP 的有效性和设计决定由相应负责人确认，建议不自动变成生产操作或已审核知识。</div>
+</section>
+
+<section id="maintain" class="section"><div class="section-head"><span class="num">04</span><div><h2>谁来维护，什么情况下必须更新？</h2><p>用明确的 owner 和变化触发复核，避免“收集很多、没人敢用”。</p></div></div>
+<div class="table-wrap"><table><thead><tr><th scope="col">责任角色</th><th scope="col">主要工作</th><th scope="col">建议触发时机</th></tr></thead><tbody>
+<tr><td>FFer / 贡献者</td><td>记录事实与处理结果，反馈错误或不适用步骤</td><td>日常处理后、交接时或使用知识发现偏差时</td></tr>
+<tr><td>轮值整理人</td><td>处理新增记录、识别重复、分配领域 owner、追踪待核实项</td><td>交接时整理新增项；按实际工作量安排定期整理</td></tr>
+<tr><td>领域负责人 / SOP owner</td><td>确认事实、维护适用范围、安排验证、标记过时或退役内容</td><td>出现新证据、实际使用失败、系统或依赖发生变化时</td></tr>
+<tr><td>Repo 维护者</td><td>维护结构、ID、模板及链接，检查复核记录并合并获准变更</td><td>每次变更；定期检查无 owner、失效引用及长期待复核内容</td></tr>
+<tr><td>架构 / 业务 / 验证负责人</td><td>评估迁移适用性，确认验收条件，维护设计与执行证据</td><td>设计评审、版本变更、验证执行及切换准备时</td></tr>
+</tbody></table></div><p class="hint">可兼任角色，但操作性 SOP 建议由另一位具备领域能力的人员复核；具体人选、投入、复核周期和合并权限待 D-07 / D-09 确认。</p>
+<div class="two" style="margin-top:26px"><div><h3>SOP 的建议状态</h3><div class="lifecycle" aria-label="SOP 状态流转"><span class="state">草稿</span><span class="arrow">→</span><span class="state">待验证 / 复核</span><span class="arrow">→</span><span class="state active">已审核 · 限适用范围</span></div><p>来源变化、系统版本变化或使用结果不符时，转为<strong>待复核</strong>。不再适用的内容标记<strong>已退役</strong>，保留历史链接与替代方案。</p><p class="hint">待复核且影响操作正确性的 SOP 应暂停作为操作依据，按既有支持流程升级。发布知识不改变生产操作所需的授权。</p></div><div class="dark-panel"><p class="small-label">复用前必须说清楚</p><h3>一个 SOP 应包含什么？</h3><ul><li>目的、适用系统／版本、前置条件及所需权限</li><li>每步操作、预期结果、观察方法和停止条件</li><li>失败时的回退／恢复方式；无法回退时的升级路径</li><li>来源、owner、复核人、验证环境及证据</li><li>最近验证时间、复核触发条件、版本与替代关系</li></ul></div></div>
+</section>
+
+<section id="migration" class="section"><div class="section-head"><span class="num">05</span><div><h2>经验怎样进入新系统的设计之初？</h2><p>既看严重事故，也看日常支持反复出现的困难；形成证据后进入设计和验证。</p></div></div>
+<div class="evidence-chain"><div><strong>① 日常与事故证据</strong><p>关联 FF log、问题、RCA 和 SOP，保留业务场景、机制及历史控制。</p></div><div><strong>② 设计问题</strong><p>哪些条件会保留？哪些手工步骤可改进？原有控制如何由新平台承接？</p></div><div><strong>③ 设计决定</strong><p>绑定目标设计版本，记录保留、替换或不适用的判断及确认人。</p></div><div><strong>④ 验证与回流</strong><p>定义预期业务效果；后续记录实际执行证据，并更新新平台支持知识。</p></div></div>
+<div class="callout"><strong>纯假设示例：</strong>如果多份支持记录显示某任务经常需要人工恢复，先核实原因与条件，再讨论是否改进恢复机制；验证关注故障后的业务一致性和可恢复性。不能仅凭“记录很多”认定架构有缺陷。</div>
+<details><summary>怎么判断这个知识库是否有用？</summary><p>建议观察：同事能否找到适用知识、SOP 实际使用的成功与偏差反馈、知识校正和维护耗时、重复支持工作是否减少，以及设计评审是否引用了可核实的历史证据。先约定口径和基线，不设未经讨论的目标数字，也不以页面数量代替价值。</p></details>
+<details><summary>为什么不能把 FF log 数量直接作为事故趋势？</summary><p>多条记录可能属于一个问题，一个问题也可能不是事故。日常工作量、问题频次和唯一事故数应分别统计，并注明采集覆盖范围；只有 RCA 确认并符合既定规则的关联才进入已确认重复事故统计。</p></details>
+</section>
+
+<section id="decisions" class="section"><div class="section-head"><span class="num">06</span><div><h2>先确认工作方式，再建设能力。</h2><p>你提出的方向：扩展为所有 FFer 可参与的日常 production support 知识库。本页的流程和能力仍是建议，正式讨论状态统一记录在 decisions.md。</p></div></div>
+<div class="decision-row"><a href="decisions.md">D-09</a><div><strong>日常支持范围与 FF log 整理方式</strong><p>告警响应、写处理日志并共享给值班同事的流程已确认。待确认日志字段、格式、保存与发送渠道，哪些记录有复用价值，以及 SOP 的发布与退役规则。</p></div></div>
+<div class="decision-row"><a href="decisions.md">D-06</a><div><strong>获批环境与访问范围</strong><p>原始日志、派生摘要、SOP 分别存放在哪里；处理工具和访问权限如何继承。</p></div></div>
+<div class="decision-row"><a href="decisions.md">D-07</a><div><strong>维护人员与贡献入口</strong><p>谁整理、谁复核、谁合并，怎样让不使用 Git 的 FFer 也能贡献；长期投入如何安排。</p></div></div>
+<div class="decision-row"><a href="decisions.md">D-05 / 08</a><div><strong>扩展后的试点如何验证</strong><p>现有试点主要覆盖 INC / RCA。若采纳日常支持范围，需补充日志整理、SOP 复用和使用反馈的代表性样本与验收条件，不能沿用原验收就声称全部通过。</p></div></div>
+<p class="hint">当前可继续：共同评审本页、完善空白模板和用明确标注的虚构情境讨论。真实资料导入、自动化运行和生产操作尚未获批。</p>
+</section>
+</main>
+<footer class="wrap footer"><div><p>Lending Incident Wiki · Production support 维护与贡献讨论稿</p><p><a href="../README.md">范围与一页方案</a> · <a href="design.md">现有设计细节</a> · <a href="decisions.md">决定记录（唯一状态来源）</a></p></div><button class="print-button" id="print" type="button">打印 / 保存为 PDF</button></footer>
+<script>
+const buttons = Array.from(document.querySelectorAll('[data-scene]'));
+buttons.forEach(button => button.addEventListener('click', () => {
+  buttons.forEach(item => {
+    const selected = item === button;
+    item.setAttribute('aria-pressed', String(selected));
+    document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+  });
+}));
+document.getElementById('print').addEventListener('click', () => window.print());
+(() => {
+  const root = document.getElementById('ff-demo');
+  const panels = Array.from(root.querySelectorAll('.demo-panel'));
+  const progress = Array.from(root.querySelectorAll('.demo-progress li'));
+  const next = root.querySelector('#demo-next');
+  const back = root.querySelector('#demo-back');
+  const state = { step: 0, check: null, outcome: null };
+  const text = (id, value) => { root.querySelector('#' + id).textContent = value; };
+  const outcomes = {
+    recovered: {
+      result: '模拟反馈：按 DEMO-SOP-004 v3 单次恢复；09:22 任务完成，输出清单符合预期，无重复产物。',
+      unknown: '本次恢复结果已在演示反馈中给出；锁为何未随旧任务释放仍是待调查问题，不能写成已确认根因。',
+      knowledge: '向 DEMO-CASE-017 关联本次反馈；为 DEMO-SOP-004 提出说明补充：再次强调活动 owner 与输出检查点核对。保持既有适用范围，不因一次成功扩大版本范围。',
+      design: '提出“重启后运行锁如何恢复、检查点与输出如何一致”的设计问题，并考虑验证受控恢复不会产生重复产物。'
+    },
+    failed: {
+      result: '模拟反馈：按 DEMO-SOP-004 v3 尝试单次恢复后再次出现 LEASE_BUSY；09:22 已停止重试、保留现场并升级，恢复未完成。',
+      unknown: '重复冲突原因、业务恢复情况均未确认；不能把已执行步骤或告警记录写成恢复成功。',
+      knowledge: '关联 DEMO-CASE-017 但标注结果不一致；对 DEMO-SOP-004 提出适用性复核建议，附失败反馈。若影响操作正确性，由 Owner 标记待复核并暂停作为依据；本页未修改任何正式状态。',
+      design: '保留“单次恢复后仍冲突”的待调查线索；先查清机制，再提出恢复机制及失败停止条件的设计验证。'
+    },
+    active: {
+      result: '模拟反馈：未清锁、未重复启动；09:22 原任务仍在处理，已交任务 owner 跟进。完成与业务恢复仍待确认。',
+      unknown: '尚无任务完成与输出核对证据；也没有残留锁证据。本次不能归入“清锁恢复成功”。',
+      knowledge: '关联 DEMO-CASE-029，补充“同错误码但旧任务仍活动”的排查线索；为 DEMO-SOP-004 提出入口提示，明确此情形不适用，无需创建重复 SOP。',
+      design: '讨论重复启动时如何向值班人员展示活动 owner 与处理进度；验证并发启动被阻止且不会破坏正在运行的任务。'
+    }
+  };
+  const render = () => {
+    panels.forEach((panel, index) => { panel.hidden = index !== state.step; });
+    progress.forEach((item, index) => {
+      if (index === state.step) item.setAttribute('aria-current', 'step');
+      else item.removeAttribute('aria-current');
+    });
+    root.querySelectorAll('[data-demo-check]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.demoCheck === state.check)));
+    root.querySelectorAll('[data-demo-outcome]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.demoOutcome === state.outcome)));
+    const eligible = state.check === 'eligible';
+    root.querySelector('#demo-plan-eligible').hidden = !eligible;
+    root.querySelector('#demo-plan-active').hidden = state.check !== 'active';
+    root.querySelector('#demo-feedback-eligible').hidden = !eligible;
+    root.querySelector('#demo-feedback-active').hidden = state.check !== 'active';
+    text('demo-plan-title', eligible ? '首选：满足前提后，按既有流程单次恢复。' : '首选：保护仍在运行的任务，先观察并按需升级。');
+    text('demo-plan-summary', eligible ? '已观察：新尝试被运行锁阻止。补充检查：旧 owner 已退出，CP-06 与输出一致。判断：残留锁方案具备适用前提，但完整根因尚未确认。' : '补充检查：旧 owner 仍有心跳与处理进度。当前不满足残留锁恢复前提；运行锁可能正发挥防止并发的作用。');
+    const result = state.check === 'active' ? outcomes.active : outcomes[state.outcome];
+    text('demo-draft-check', state.check === 'active' ? 'DEMO-CHECK-B：原任务仍活动，心跳与进度更新。' : state.check ? 'DEMO-CHECK-A：无活动 owner，检查点 CP-06 与已有输出一致。' : '尚未选择。');
+    text('demo-draft-result', result ? result.result : '尚未选择模拟结果。');
+    text('demo-draft-sources', state.check === 'active' ? 'DEMO-LOG-001 L01–L07；DEMO-CHECK-B；DEMO-CASE-029 v1 §1–2。' : state.check ? 'DEMO-LOG-001 L01–L07；DEMO-CHECK-A；DEMO-CASE-017 v2 §2–3；DEMO-SOP-004 v3 §1–4。' : '尚未选择。');
+    text('demo-draft-unknown', result ? result.unknown : '尚未选择模拟结果。');
+    text('demo-draft-knowledge', result ? result.knowledge : '尚未形成草稿。');
+    text('demo-draft-design', result ? result.design : '尚未形成线索。');
+    const labels = ['模拟：把示例 log 交给 agent', '查看条件对应的建议', '查看模拟处理反馈', '预览 FF log 与知识草稿'];
+    next.hidden = state.step === 4;
+    next.textContent = labels[state.step] || '演示结束';
+    next.disabled = (state.step === 1 && !state.check) || (state.step === 3 && eligible && !state.outcome);
+    back.disabled = state.step === 0;
+    const hints = ['查看内置报错日志，然后模拟交给 agent。', state.check ? '已选检查结果，可继续查看建议。' : '请选择一个虚构检查结果，决定下一步。', '当前建议基于选定的检查结果，没有执行操作。', eligible && !state.outcome ? '请选择一个虚构处理结果。' : '已有预置反馈，可预览知识草稿。', '已生成本页草稿预览，未发送或保存。'];
+    text('demo-status', `第 ${state.step + 1} / 5 步：${hints[state.step]}`);
+  };
+  const moveToStep = () => {
+    render();
+    const status = root.querySelector('#demo-status');
+    status.focus({ preventScroll: true });
+    status.scrollIntoView({ block: 'start', behavior: 'instant' });
+  };
+  next.addEventListener('click', () => {
+    if (!next.disabled && state.step < 4) { state.step += 1; moveToStep(); }
+  });
+  back.addEventListener('click', () => {
+    if (state.step > 0) { state.step -= 1; moveToStep(); }
+  });
+  root.querySelectorAll('[data-demo-check]').forEach(button => button.addEventListener('click', () => {
+    state.check = button.dataset.demoCheck; state.outcome = null; render();
+  }));
+  root.querySelectorAll('[data-demo-outcome]').forEach(button => button.addEventListener('click', () => {
+    state.outcome = button.dataset.demoOutcome; render();
+  }));
+  root.querySelector('#demo-reset').addEventListener('click', () => {
+    state.step = 0; state.check = null; state.outcome = null;
+    root.querySelector('#demo-evidence').open = false; moveToStep();
+  });
+  root.querySelectorAll('a[href^="#demo-"]').forEach(link => link.addEventListener('click', () => {
+    root.querySelector('#demo-evidence').open = true;
+  }));
+  render();
+})();
+let printDetails = [];
+window.addEventListener('beforeprint', () => {
+  printDetails = Array.from(document.querySelectorAll('details')).map(element => ({ element, open: element.open }));
+  printDetails.forEach(({ element }) => { element.open = true; });
+});
+window.addEventListener('afterprint', () => {
+  printDetails.forEach(({ element, open }) => { element.open = open; });
+  printDetails = [];
+});
+</script>
+</body>
+</html>
