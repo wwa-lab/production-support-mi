@@ -22,7 +22,7 @@
 <header class="top"><div class="wrap"><div class="brand"><span>PS /</span> KNOWLEDGE HUB</div><nav aria-label="页面导航"><a href="#ff-demo">虚构演示</a><a href="#scenarios">日常场景</a><a href="#structure">知识组织</a><a href="#contribute">如何贡献</a><a href="#maintain">怎样维护</a><a href="#decisions">待讨论</a></nav></div></header>
 <main id="main" class="wrap">
 <section class="hero" aria-labelledby="title">
-<div><span class="tag">共同设计讨论稿 · 2026.10.24 · 尚未批准实施</span><p class="eyebrow">Lending Incident Wiki / Proposed evolution</p><h1 id="title">把每一次支持，<br>变成下一次的经验。</h1><p class="lead">面向所有 FFer 的 production support 知识库：从日常 FF log、问题排查与事故复盘中积累经验，形成可复用的 SOP，并把教训带入新系统设计与验证。</p><p class="hero-note">已确认的现有流程：生产问题触发 alert → 值班人员收到消息或电话 → 处理并写日志 → 发给所有值班同事。本页讨论如何在此基础上持续积累知识；仓库仍只有讨论方案、空白模板与虚构演示。</p></div>
+<div><span class="tag">共同设计讨论稿 · 2026.10.24 · 尚未批准实施</span><p class="eyebrow">Production Support &amp; MI / Proposed evolution</p><h1 id="title">把每一次支持，<br>变成下一次的经验。</h1><p class="lead">面向所有 FFer 的 production support 知识库：从日常 FF log、问题排查与事故复盘中积累经验，形成可复用的 SOP，并把教训带入新系统设计与验证。</p><p class="hero-note">已确认的现有流程：生产问题触发 alert → 值班人员收到消息或电话 → 处理并写日志 → 发给所有值班同事。本页讨论如何在此基础上持续积累知识；仓库仍只有讨论方案、空白模板与虚构演示。</p></div>
 <div class="hero-map" aria-label="建议的知识积累路径"><p class="eyebrow">Daily work → Shared knowledge</p><div class="map-row"><div class="map-box">日常 FF log<small>观察 · 排查 · 处理 · 交接</small></div></div><div class="map-arrow" aria-hidden="true">↓ 筛选、关联与复核</div><div class="map-row"><div class="map-box">问题与经验<small>可复用的处理方法</small></div><div class="map-box">INC / RCA<small>有事故时完整复盘</small></div></div><div class="map-arrow" aria-hidden="true">↓ 验证与沉淀</div><div class="map-row"><div class="map-box">SOP / Runbook<small>日常支持可以复用</small></div><div class="map-box">设计 / 验证<small>新系统避免重蹈覆辙</small></div></div><p class="map-foot">使用后的反馈回到记录与修订。并非每条 log 都需要成为事故或 SOP。</p></div>
 </section>
 <div class="intro-strip"><div><strong>每个人都能贡献</strong><p>记录现场事实、补充证据、反馈 SOP 问题；贡献入口应适配不同 Git 熟练程度。</p></div><div><strong>成熟度清楚可见</strong><p>保留待核实的线索，同时把经过复核的操作知识单独标明。</p></div><div><strong>经验可以被再次使用</strong><p>按业务、症状、系统和操作任务查找，关联来源、适用版本及负责人。</p></div></div>
@@ -153,7 +153,7 @@ L07  [09:15:04+08:00] event=JOB_BLOCKED processed_this_attempt=0</pre>
 <p class="hint">当前可继续：共同评审本页、完善空白模板和用明确标注的虚构情境讨论。真实资料导入、自动化运行和生产操作尚未获批。</p>
 </section>
 </main>
-<footer class="wrap footer"><div><p>Lending Incident Wiki · Production support 维护与贡献讨论稿</p><p><a href="../README.md">范围与一页方案</a> · <a href="design.md">现有设计细节</a> · <a href="decisions.md">决定记录（唯一状态来源）</a></p></div><button class="print-button" id="print" type="button">打印 / 保存为 PDF</button></footer>
+<footer class="wrap footer"><div><p>Production Support &amp; MI · Production support 维护与贡献讨论稿</p><p><a href="../README.md">范围与一页方案</a> · <a href="design.md">现有设计细节</a> · <a href="decisions.md">决定记录（唯一状态来源）</a></p></div><button class="print-button" id="print" type="button">打印 / 保存为 PDF</button></footer>
 <script>
 const buttons = Array.from(document.querySelectorAll('[data-scene]'));
 buttons.forEach(button => button.addEventListener('click', () => {
