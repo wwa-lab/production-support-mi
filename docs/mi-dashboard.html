@@ -53,6 +53,13 @@ dialog{position:fixed;inset:16px 16px 16px auto;margin:0;padding:0;width:min(660
 @media(max-width:1120px){.header-nav{display:none}.site-header .brand small{display:none}}
 @media(max-width:580px){.site-header{flex-wrap:wrap;gap:8px}.site-header .brand{flex-basis:100%}.header-actions{width:100%;justify-content:space-between;margin:0}.locale-switch select{width:145px}.product-nav>button{min-width:0;overflow-wrap:normal}html[lang="en"] .product-nav>button{flex:1 1 27%;font-size:12px;padding-inline:6px}.v3-tabs button{flex:1 1 auto}.snapshot{gap:6px}.kpi{padding:13px}.value{font-size:30px}html[lang="en"] .kpi-main{flex-direction:column;align-items:flex-start}.m2-toolbar .search-field{min-width:0;width:100%}}
 @media(max-width:360px){html[lang="en"] .filters .field{flex-basis:100%}html[lang="en"] .filters .plain{width:100%}}
+/* Session MI attention counts always share the incident filters. */
+.m1-attention{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:18px 0 24px}.m1-attention-card{display:flex;flex-direction:column;align-items:flex-start;gap:9px;text-align:left;padding:22px;border:1px solid var(--line);border-top:3px solid var(--orange);border-radius:10px;background:var(--surface);color:var(--ink);min-width:0;line-height:1.6}.m1-attention-card:hover,.m1-attention-card[aria-pressed="true"]{background:var(--soft);border-color:var(--accent)}.m1-attention-title{font-size:17px;font-weight:650}.m1-attention-value{font-size:36px;line-height:1.2;font-variant-numeric:tabular-nums}.m1-attention-value small{font-size:13px;font-weight:400;color:var(--muted)}.m1-attention-desc,.m1-attention-unknown{font-size:12px;color:var(--muted)}.m1-attention-unknown{border-top:1px solid var(--line);padding-top:9px;width:100%;margin-top:auto}.m1-attention-link{color:var(--accent);font-size:13px}.m1-mi-missing{border-top:1px solid var(--line);margin-top:20px;padding-top:10px}.m1-mi-missing summary{cursor:pointer;min-height:44px;padding:10px 0;font-size:13px}.m1-mi-missing ul{padding-left:20px}.m1-mi-missing .text-button{min-height:44px}.m1-queue-tools{margin-bottom:18px}#m1-mi-queue-heading{scroll-margin-top:84px}
+@media(max-width:580px){.m1-attention{grid-template-columns:1fr;gap:12px}.m1-attention-card{padding:18px}.m1-attention-value{font-size:30px}#m1-mi-queue-heading{scroll-margin-top:12px}}
+
+.m1-followup-item{border-top:1px solid var(--line);padding:24px 0}.m1-followup-item:last-child{padding-bottom:0}.m1-followup-item h3{font-size:17px;margin:9px 0}.m1-followup-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr) minmax(0,1.2fr);gap:24px;margin:18px 0}.m1-followup-grid>div{min-width:0;overflow-wrap:anywhere}.m1-followup-grid dt{color:var(--muted);font-size:12px;margin-bottom:10px}.m1-followup-grid dd{margin:0;font-size:13px;line-height:1.8}.m1-followup-grid strong{font-weight:550}.m1-followup-grid small{display:block;color:var(--muted);margin-top:5px}.m1-followup-grid p{margin:8px 0 0}.m1-followup-item .m2-heading-line{flex-wrap:wrap}.m1-followup-item .m2-actions button{min-height:44px}#m1-followup-heading{scroll-margin-top:84px}@media(max-width:850px){.m1-followup-grid{grid-template-columns:1fr;gap:16px}#m1-followup-heading{scroll-margin-top:12px}}
+
+.m1-coord-summary{border-left:2px solid var(--accent);background:var(--surface-alt);padding:12px 16px;margin:14px 0;font-size:13px}.m1-coord-summary p{margin:7px 0}.m1-coord-form{display:grid;gap:16px}.m1-coord-form .field{min-width:0;display:flex;flex-direction:column;gap:7px}.m1-coord-form textarea,.m1-coord-form input,.m1-coord-form select{width:100%;box-sizing:border-box;min-height:44px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);padding:10px;font:inherit}.m1-coord-form textarea{resize:vertical;line-height:1.7}.m1-coord-form [role="alert"]:empty,.m1-coord-form [role="status"]:empty{display:none}.m1-coord-form textarea:focus-visible,.m1-coord-form input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}#detail-body dd[translate="no"]{white-space:pre-wrap;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -495,7 +502,7 @@ const m1Snapshots=[
 ];
 const m1Live={index:-1,snapshot:null,mode:'normal',syncStatus:'empty',lastAttempt:null,proof:'',retro:false,reportChecks:{facts:false,scope:false},reports:[],selectedReport:0};
 const m1Retro={id:'DEMO-RETRO-1001',version:'v1',author:'示例复盘整理人 F',body:'本次业务已恢复，根因沿用源流程的确认结果。队列监测与依赖检查仍待整改；影响笔数与金额尚未提供；需要继续跟进整改有效性验证。'};
-const m1Ui={miSystem:'all',miOrigin:'all',notice:''};
+const m1Ui={miSystem:'all',miOrigin:'all',miFocus:'followup',notice:''};
 const m1Btn=(label,action,disabled=false,primary=false)=>`<button type="button" class="${primary?'primary':'plain'}" data-m1="${action}" ${disabled?'disabled':''}>${label}</button>`;
 const m1Options=(entries,value)=>Object.entries(entries).map(([k,v])=>`<option value="${k}" ${k===value?'selected':''}>${esc(v)}</option>`).join('');
 function m1Ref(id){const s=m1Sources[id];return s?`<button type="button" class="text-button" data-m1-source="${id}">${id} · ${esc(s.version)} ↗</button>`:'';}
@@ -592,10 +599,111 @@ function renderM1Inc(){
  const stale=m1ReportStale(r),gaps=m1ReportGaps(r.payload),latest=r===m1LatestReport();
  return `<div class="m2-toolbar"><div class="field search-field"><label for="m1-report-version">报告版本</label><select id="m1-report-version">${l.reports.map((x,i)=>`<option value="${i}" ${i===l.selectedReport?'selected':''}>v${x.version} · 来源 ${x.payload.snapshot.version} · ${x.reviewed?'曾完成模拟复核':'草稿'}${m1ReportStale(x)?' · 来源已变化':''}</option>`).join('')}</select></div>${m1Btn('返回本事故复盘','go-live')}${m1Btn(stale?'按最新资料形成修订':'查看 / 生成当前资料版本','build-report',l.proof==='wrong')}</div>${stale?'<div class="m2-callout" role="status"><strong>来源或复盘补充已变化，当前报告需重新复核。</strong> 下方保留原版本，不用最新资料静默改写旧报告。</div>':''}${l.syncStatus==='failed'?'<div class="m2-callout">最近同步失败，最新状态无法核实；当前报告暂不能完成复核。</div>':''}<div class="m2-layout"><article class="m2-report-body"><div class="m2-heading-line"><div><span class="m2-preview-stamp">FICTIONAL / ${r.reviewed?'REVIEWED LOCALLY':'DRAFT'}</span><h2 id="m1-report-heading" tabindex="-1">INC 报告 · v${r.version}</h2></div><span class="badge ${stale||gaps.length?'warning':r.reviewed?'ok':''}">${stale?'待重新复核':r.reviewed?'模拟复核完成 · 未提交':gaps.length?'草稿 · 待补证':'草稿 · 待复核'}</span></div>${m1ReportHTML(r)}</article><aside class="m2-side"><h2>人工复核 · 页面演练</h2><p>本版绑定 ${r.payload.snapshot.sourceId} / ${r.payload.snapshot.version}，RCA 为 ${r.payload.snapshot.rcaVersion||'未确认'}。</p>${gaps.length?`<ul>${gaps.map(g=>`<li>${g}</li>`).join('')}</ul>`:'<p>本示例关键来源与验证证据已齐备；整改仍未完成。</p>'}<div class="m2-checks"><label><input type="checkbox" id="m1-check-facts" ${l.reportChecks.facts?'checked':''} ${stale||!latest||r.reviewed?'disabled':''}>已核对本版时间线、RCA 与来源引用</label><label><input type="checkbox" id="m1-check-scope" ${l.reportChecks.scope?'checked':''} ${stale||!latest||r.reviewed?'disabled':''}>已保留缺失影响量及未验证整改，不将恢复写成闭环</label></div>${m1Btn('模拟完成复核','approve-report',!m1CanApprove()||r.reviewed,true)}<p class="m2-note">${stale?'请先形成最新资料修订。':gaps.length?'缺口补齐后才能模拟完成复核。':'示例复核角色：报告 Owner F。实际审批规则待确认。'}</p><div class="m2-actions">${m1Btn('下载本版虚构报告 .md','report-download')}${m1Btn('查看本次演练 MI','go-mi')}</div><p class="m2-note">按当前语言下载，保留本版来源和状态；未发送、未归档到原系统。</p></aside></div>`;
 }
+function m1ActionVerified(action){return action.validated===true&&typeof action.validationEvidence==='string'&&action.validationEvidence.trim().length>0;}
+function m1MiData(){
+ const rows=[...m1Ledger.values()].filter(r=>(m1Ui.miSystem==='all'||r.system===m1Ui.miSystem)&&(m1Ui.miOrigin==='all'||r.origin===m1Ui.miOrigin));
+ const reports=rows.flatMap(record=>{const report=record.id===m1LiveId?m1LatestReport():null;return report&&(!report.reviewed||m1ReportStale(report))?[{record,report}]:[];});
+ const actions=rows.flatMap(record=>record.actions.filter(action=>!m1ActionVerified(action)).map(action=>({record,action})));
+ return {rows,reports,actions,missingReports:rows.filter(r=>r.id!==m1LiveId||!m1LatestReport()),missingActions:rows.filter(r=>!r.actions.length)};
+}
+function m1ReportReason(report){return m1ReportStale(report)?'来源已变化，需形成修订并重新复核':m1ReportGaps(report.payload).length?'草稿仍有资料缺口，补齐后复核':'最新草稿待人工复核';}
+// Coordination notes are page-local records, separate from source actions and reports.
+const m1Coord={logs:new Map(),active:null};
+const m1CoverageLabels={insufficient:'证据不足',partial:'部分覆盖',sufficient:'覆盖充分'};
+const m1CoordPeople={smeG:'示例 SME G',smeH:'示例 SME H',leadH:'示例查证牵头人 H',leadJ:'示例查证牵头人 J'};
+function m1CoordKey(type,id,actionId=''){return [type,id,actionId].join('|');}
+function m1CoordContext(type,id,actionId=''){
+ const r=m1Ledger.get(id);if(!r)return null;const a=r.actions.find(x=>x.id===actionId);
+ if(type==='coverage'&&!a)return null;
+ return {incident:r.id,source:r.sourceId,version:r.version,root:r.root,confirmed:r.confirmed,refs:m1Clone(r.refs),actions:m1Clone(r.actions),action:a?m1Clone(a):null};
+}
+function m1CoordStale(entry){return JSON.stringify(entry.context)!==JSON.stringify(m1CoordContext(entry.type,entry.id,entry.actionId))||(entry.type==='coverage'&&entry.id===m1LiveId&&m1Live.syncStatus==='failed');}
+function m1CoordButton(type,id,actionId=''){return `<button type="button" class="plain" data-m1-coord="${type}" data-coord-record="${id}" data-coord-action="${actionId}">${type==='coverage'?'记录／修订覆盖核对':'记录／修订查证安排'}</button>`;}
+function m1CoordSummary(type,id,actionId=''){
+ const entry=m1Coord.logs.get(m1CoordKey(type,id,actionId))?.at(-1);if(!entry)return '';
+ return `<div class="m1-coord-summary"><strong>${type==='coverage'?'覆盖核对记录':'资料查证安排'} · v${entry.version}</strong><p>${type==='coverage'?`${m1CoverageLabels[entry.fields.result]} · ${m1CoordPeople[entry.fields.reviewer]}`:`${m1CoordPeople[entry.fields.leader]} · ${esc(entry.fields.replyDate)}`}</p><p class="m2-note">${m1CoordStale(entry)?'来源已变化或无法核实，原记录保留，需重新核对。':type==='coverage'?'已记录核对结论；不改变整改验证缺口或源措施状态。':'已记录查证安排；措施 Owner 仍待明确，来源仍待补齐。'}</p></div>`;
+}
+function m1CoordHistory(logs){return logs.length?`<details class="m1-mi-missing"><summary>已保存的演练版本 · ${logs.length}</summary>${logs.map(entry=>`<article class="m1-extract"><h3>v${entry.version} · ${entry.type==='coverage'?m1CoverageLabels[entry.fields.result]:m1CoordPeople[entry.fields.leader]}</h3><p class="m2-code">${esc(entry.context.source)} / ${esc(entry.context.version)} · ${esc(entry.savedAt)} UTC</p>${m1CoordStale(entry)?'<p class="quality-note">来源已变化或无法核实，原记录保留，需重新核对。</p>':''}<dl class="m2-facts">${Object.entries(entry.fields).map(([key,value])=>`<div><dt>${({reviewer:'模拟核对人',result:'覆盖核对结论',basis:'核对依据与覆盖缺口',refs:'依据引用',next:'下一步与验证安排',leader:'资料查证牵头人',replyDate:'约定回复日期',scope:'查证范围'})[key]}</dt><dd ${['basis','refs','next','scope'].includes(key)?'translate="no"':''}>${esc(['reviewer','leader'].includes(key)?m1CoordPeople[value]:key==='result'?m1CoverageLabels[value]:value)}</dd></div>`).join('')}</dl></article>`).join('')}</details>`:'';}
+function m1OpenCoord(type,id,actionId='',notice=''){
+ if(!['coverage','source'].includes(type)||!m1Ledger.has(id))return;
+ const key=m1CoordKey(type,id,actionId),logs=m1Coord.logs.get(key)||[],last=logs.at(-1),context=m1CoordContext(type,id,actionId);
+ if(!context&&!last)return;
+ m1Coord.active={type,id,actionId,key,context:m1Clone(context)};
+ const f=last?.fields||{},coverage=type==='coverage';
+ const field=(name,label,value='',textarea=false)=>`<div class="field"><label for="coord-${name}">${label}</label>${textarea?`<textarea translate="no" id="coord-${name}" name="${name}" rows="3" maxlength="1200" required>${esc(value)}</textarea>`:`<input id="coord-${name}" name="${name}" type="date" value="${esc(value)}" required>`}</div>`;
+ openDetail(coverage?'整改覆盖核对记录':'资料查证牵头人与回复日期',`${id}${actionId?' / '+actionId:''} · 虚构本页记录`, `<p class="m2-note">仅填写虚构内容，刷新清除。记录不发送、不派单；处理与措施更新仍在 ServiceNow / COSY。</p>${coverage?'<p class="m2-callout">覆盖充分不代表措施已实施或有效；不会清除整改验证缺口，也不审批 INC 报告。</p>':'<p class="m2-callout">查证牵头人负责收集资料，不自动成为措施 Owner；回复日期不是措施到期日。</p>'}<p class="m2-code">${esc((context||last.context).source)} / ${esc((context||last.context).version)} · ${esc((context||last.context).root||'RCA 待确认')}</p>${last&&m1CoordStale(last)?'<p class="quality-note">来源已变化或无法核实，原记录保留，需重新核对。</p>':''}${coverage&&id===m1LiveId?m1SyncNotice():''}${context?`<form id="m1-coord-form" class="m1-coord-form"><div class="m2-actions"><button type="button" class="plain" data-coord-example>填入虚构示例</button></div>${coverage?`<div class="field"><label for="coord-reviewer">模拟核对人</label><select id="coord-reviewer" name="reviewer" required>${m1Options({'':'请选择',smeG:m1CoordPeople.smeG,smeH:m1CoordPeople.smeH},f.reviewer||'')}</select></div><div class="field"><label for="coord-result">覆盖核对结论</label><select id="coord-result" name="result" required>${m1Options({'':'请选择',...m1CoverageLabels},f.result||'')}</select></div>${field('basis','核对依据与覆盖缺口',f.basis,true)}${field('refs','依据引用',f.refs,true)}`:`<div class="field"><label for="coord-leader">资料查证牵头人</label><select id="coord-leader" name="leader" required>${m1Options({'':'请选择',leadH:m1CoordPeople.leadH,leadJ:m1CoordPeople.leadJ},f.leader||'')}</select></div>${field('replyDate','约定回复日期',f.replyDate)}${field('scope','查证范围',f.scope,true)}`}${field('next','下一步与验证安排',f.next,true)}<p id="coord-error" class="quality-note" role="alert" tabindex="-1"></p><p id="coord-saved" role="status" tabindex="-1">${notice}</p><button type="submit" class="primary">保存演练记录</button><p class="m2-note">保存为新的本页版本，旧记录保留；重复保存相同内容不增加版本。关闭前未保存的内容不会保留，自填文字保留输入语言。</p></form>`:'<p class="quality-note">当前未收到对应措施，只能查看旧记录；补齐来源后再核对。</p>'}${m1CoordHistory(logs)}`);
+}
+function m1CoordExample(){
+ const a=m1Coord.active;if(!a)return;
+ const values=a.type==='coverage'?{reviewer:'smeG',result:'insufficient',basis:'当前虚构来源仅给出根因概述；尚无具体瓶颈、触发负载及措施实施明细，无法判断充分覆盖。',refs:a.context.source+' / '+a.context.version+'；'+a.actionId,next:'请措施 Owner 与 SME 核对主因对应的控制措施，约定负载验证标准与观察周期；继续保留有效性未验证。'}:{leader:'leadH',replyDate:'2026-11-03',scope:a.context.source+' / '+a.context.version+'；核对获准历史工单、RCA 和整改附件。',next:'联系原事故团队，取得措施清单、Owner、最新状态及来源；无法取得则记录查找范围与原因，回复时更新查证安排。'};
+ for(const [key,value]of Object.entries(values))$('coord-'+key).value=value;
+}
+function m1SaveCoord(fields){
+ const a=m1Coord.active;if(!a)return '请重新打开记录入口。';
+ const current=m1CoordContext(a.type,a.id,a.actionId);
+ if(!current||JSON.stringify(current)!==JSON.stringify(a.context))return '来源已变化，请关闭并重新打开入口，核对后再保存。';
+ if(a.type==='coverage'&&a.id===m1LiveId&&m1Live.syncStatus!=='ok')return '当前同步状态无法支持核对，请补齐来源后再保存。';
+ const names=a.type==='coverage'?['reviewer','result','basis','refs','next']:['leader','replyDate','scope','next'],clean={};
+ for(const name of names){const value=typeof fields[name]==='string'?fields[name].trim():'';if(!value||value.length>1200)return '请完整填写必填内容，每项最多 1200 字。';clean[name]=value;}
+ if(a.type==='coverage'){
+  if(!['smeG','smeH'].includes(clean.reviewer)||!Object.hasOwn(m1CoverageLabels,clean.result))return '请选择有效的示例角色和结论。';
+  if(!current.confirmed&&clean.result!=='insufficient')return '源 RCA 未确认，只能记录证据不足。';
+ }else if(!['leadH','leadJ'].includes(clean.leader)||!/^\d{4}-\d{2}-\d{2}$/.test(clean.replyDate)||!Number.isFinite(Date.parse(clean.replyDate+'T00:00:00Z'))||new Date(clean.replyDate+'T00:00:00Z').toISOString().slice(0,10)!==clean.replyDate)return '请选择示例牵头人并填写有效回复日期。';
+ const logs=m1Coord.logs.get(a.key)||[],last=logs.at(-1);
+ if(last&&JSON.stringify(last.fields)===JSON.stringify(clean)&&JSON.stringify(last.context)===JSON.stringify(current))return '';
+ logs.push({type:a.type,id:a.id,actionId:a.actionId,version:logs.length+1,context:m1Clone(current),fields:clean,savedAt:new Date().toISOString().replace('T',' ').replace(/\.\d{3}Z$/,'')});m1Coord.logs.set(a.key,logs);return '';
+}
+document.addEventListener('submit',e=>{
+ if(e.target.id!=='m1-coord-form')return;e.preventDefault();
+ const fields=Object.fromEntries(new FormData(e.target)),error=m1SaveCoord(fields);
+ if(error){$('coord-error').textContent=error;$('coord-error').focus();return;}
+ const a=m1Coord.active;renderM1();returnFocus=$('m1-heading');m1OpenCoord(a.type,a.id,a.actionId,'已保存本页演练记录；源工单与措施状态未改变。');$('coord-saved').focus();
+});
+function m1RecordCoord(r){
+ const entries=[...m1Coord.logs.values()].map(log=>log.at(-1)).filter(x=>x.id===r.id);
+ return entries.length?`<section class="panel"><h2>本平台核对与查证记录</h2>${entries.map(x=>m1CoordSummary(x.type,x.id,x.actionId)+m1CoordButton(x.type,x.id,x.actionId)).join('')}</section>`:'';
+}
+function m1Followups(data=m1MiData()){
+ const items=[];
+ for(const {record,report} of data.reports)items.push({id:record.id+':report',record,report,kind:'报告复核',title:'核对最新 INC 报告',owner:'示例报告 Owner F',basis:'页面预置复核角色，非实际派单',collaborator:'建议协同：事故 Owner',gap:m1ReportReason(report),evidence:'本版时间线、RCA 与来源引用的核对记录；保留未知影响及未验证整改。',next:m1ReportStale(report)?'先按最新资料形成修订，再核对新版本；旧版复核不沿用。':'核对最新草稿及保留的缺口，按报告流程完成本版复核。',context:`${report.id} · v${report.version} · 来源 ${report.payload.snapshot.version} / ${report.payload.snapshot.rcaVersion||'RCA 未提供'}`});
+ for(const record of data.rows.filter(r=>r.id===m1LiveId))items.push({id:record.id+':impact',record,kind:'影响补证',title:'补齐业务影响依据',owner:'示例 Owner C',basis:'源工单处理负责人',collaborator:'建议协同：业务验证人 E',gap:'影响笔数、金额与统计口径未提供；恢复验证不等于影响量核实。',evidence:'业务对账、影响对象、统计时段及来源引用；无法取得的内容明确保留未知。',next:'由事故 Owner 协调业务核对影响，并将依据关联到复盘和报告。',context:`${record.sourceId} · ${record.version}`});
+ for(const {record,action} of data.actions){
+  const live=record.id===m1LiveId,capacity=live&&m1Live.snapshot?.rcaVersion==='RCA v2';
+  items.push({id:record.id+':action:'+action.id,record,action,kind:'措施验证',title:live?'核对整改范围并补验证':'核实历史措施现状与验证',owner:action.owner||'待明确',basis:action.owner?'措施 Owner · 源记录':'来源未提供责任人依据',collaborator:live?'建议协同：SME':'建议协同：原事故 Owner',gap:'措施有效性确认及证据尚不齐备。',evidence:capacity?'建议补实施记录、容量或负载验证、依赖告警测试及观察结果，附版本、时间、证据引用与确认人。':'建议补实施记录、依赖检查测试及观察结果，附版本、时间、证据引用与确认人。',next:!live?'先取得最新措施状态；如已实施，再补验证依据。历史期限不能推断今日逾期。':capacity?'先与 SME 核对措施是否覆盖容量主因，再约定验证标准与观察周期；名称本身不能证明覆盖充分。':'与 SME 约定验证标准与观察周期，按源流程实施并保留验证记录。',context:`${action.id} · ${action.title}`,due:action.due,status:action.status});
+ }
+ for(const record of data.missingActions)items.push({id:record.id+':source',record,kind:'来源补齐',title:'核对尚未提供的整改资料',owner:'待明确',basis:'来源未提供责任人依据',collaborator:'建议资料整理负责人协调原事故 Owner',gap:'未收到整改资料，措施数量与有效性未知；不判定为没有措施或措施未完成。',evidence:'措施清单、Owner、期限、状态及来源版本；如已验证，附结果与确认依据。',next:record.id===m1LiveId&&m1Live.snapshot?.coverage==='partial'?'先恢复 COSY 来源同步，再核对是否有遗漏措施；不以部分同步后的数量下降认定闭环。':'核对原系统或获准历史资料，确认是尚未收集、无法取得，还是已有明确的无措施依据。',context:`${record.sourceId} · ${record.version}`});
+ return items;
+}
+function renderM1Followups(data){
+ const items=m1Followups(data);
+ return `<section class="panel m1-followups"><div class="panel-head"><div><h2 id="m1-followup-heading" tabindex="-1">管理层跟进清单</h2><p class="sub">${items.length} 项协调事项 · 同一事故可有多项，不作为事故数或措施数。</p></div><span class="badge">虚构协调建议</span></div><p class="m2-note">事故处理与措施更新仍在 ServiceNow / COSY；本清单展示来源状态、证据缺口和建议下一步，不派单或修改措施。</p><p class="m2-note">覆盖本次示例的报告复核、影响补证、措施验证和来源缺失；责任人依据与建议协同分别标注。</p>${items.map(item=>`<article class="m1-followup-item" data-followup-id="${item.id}"><div class="m2-heading-line"><div><span class="badge warning">${item.kind}</span><h3>${item.title}</h3></div><span class="m2-code">${item.record.system} · ${item.record.id}</span></div><p class="m2-code">${item.context}</p>${item.action?`<p class="m2-note">源措施状态：${item.status} · 源期限：${item.due||'未提供'} · ${item.record.origin==='历史资料'?'历史来源快照':'同步来源快照'}</p>`:''}<dl class="m1-followup-grid"><div><dt>谁负责</dt><dd><strong>${item.owner}</strong><small>${item.basis}</small><p>${item.collaborator}</p></dd></div><div><dt>缺什么证据</dt><dd><strong>${item.gap}</strong><p>${item.evidence}</p></dd></div><div><dt>下一步做什么</dt><dd>${item.next}</dd></div></dl>${item.action?m1CoordSummary('coverage',item.record.id,item.action.id):item.kind==='来源补齐'?m1CoordSummary('source',item.record.id):''}<div class="m2-actions">${item.action?m1CoordButton('coverage',item.record.id,item.action.id):item.kind==='来源补齐'?m1CoordButton('source',item.record.id):''}${item.report?`<button type="button" class="primary" data-m1-report-record="${item.record.id}">打开最新报告 →</button>`:''}${item.action?`<button type="button" class="primary" data-m1-action="${item.action.id}" data-m1-action-record="${item.record.id}">查看对应措施 →</button>`:''}<button type="button" class="plain" data-m1-record="${item.record.id}">打开关联事故 →</button><button type="button" class="text-button" data-m1-evidence-record="${item.record.id}">核对本事故来源 →</button></div></article>`).join('')||'<div class="m2-empty"><h3>当前筛选下无已知跟进事项</h3><p>仅限本次演练已收到的资料，不代表所有事故均已闭环。</p></div>'}</section>`;
+}
+function m1MiMissing(rows,kind){
+ if(!rows.length)return '';
+ return `<details class="m1-mi-missing"><summary>${kind==='reports'?'报告未生成或未提供':'整改资料未提供'} · ${rows.length} 起事故</summary><p class="m2-note">${kind==='reports'?'未纳入待复核报告数；未提供不代表已复核，也不自动认定必须补写历史报告。':'措施数量与有效性未知，未纳入已知措施缺口数；需要核对来源。'}</p><ul>${rows.map(r=>`<li><button type="button" class="text-button" data-m1-record="${r.id}">${r.id} →</button> · ${r.system} · ${r.origin}</li>`).join('')}</ul></details>`;
+}
+function renderM1Attention(data){
+ return `<section class="m1-attention" aria-label="本次演练管理关注事项"><button type="button" class="m1-attention-card" data-m1-focus="reports" aria-pressed="${m1Ui.miFocus==='reports'}"><span class="m1-attention-title">待复核报告</span><strong class="m1-attention-value">${data.reports.length} <small>份最新报告</small></strong><span class="m1-attention-desc">含未复核草稿与来源变化后待重审的报告；每起事故只计最新版。</span><span class="m1-attention-unknown">另有 ${data.missingReports.length} 起事故的报告未生成或未提供</span><span class="m1-attention-link">查看报告与关联事故 →</span></button><button type="button" class="m1-attention-card" data-m1-focus="actions" aria-pressed="${m1Ui.miFocus==='actions'}"><span class="m1-attention-title">整改验证缺口</span><strong class="m1-attention-value">${data.actions.length} <small>项已知措施</small></strong><span class="m1-attention-desc">已收到措施，但尚无有效性确认及证据；业务恢复与报告复核不消除此缺口。</span><span class="m1-attention-unknown">另有 ${data.missingActions.length} 起事故未提供整改资料，措施数量未知</span><span class="m1-attention-link">查看措施、责任人与证据 →</span></button></section>`;
+}
+function renderM1Queue(data){
+ const reports=m1Ui.miFocus==='reports',items=reports?data.reports:data.actions;
+ return `<section class="panel"><div class="panel-head"><div><h2 id="m1-mi-queue-heading" tabindex="-1">${reports?'待复核报告清单':'整改验证缺口清单'}</h2><p class="sub">${reports?'每起事故仅展示最新待复核版本；旧版保留在事故报告中。':'按已收到的措施逐项列出；历史状态仅代表原资料快照，不推断今日逾期。'}</p></div><button type="button" class="plain" data-m1-focus="all">返回全部事故</button></div>${items.length?`<div class="table-scroll" tabindex="0" role="region" aria-label="${reports?'待复核报告明细':'整改验证缺口明细'}"><table><thead><tr>${reports?'<th>最新报告 / 事故</th><th>复核原因</th><th>下一步</th>':'<th>措施 / 关联事故</th><th>责任人 / 期限</th><th>源状态 / 验证缺口</th>'}</tr></thead><tbody>${items.map(item=>{const r=item.record;if(reports){const report=item.report;return `<tr><td>${report.id} · v${report.version}<small><button type="button" class="text-button" data-m1-record="${r.id}">${r.id} →</button></small></td><td>${m1ReportReason(report)}<small>${report.payload.snapshot.version} / ${report.payload.snapshot.rcaVersion||'RCA 未提供'}</small></td><td><button type="button" class="text-button" data-m1-report-record="${r.id}">打开最新报告 →</button></td></tr>`;}const a=item.action;return `<tr><td><button type="button" class="text-button" data-m1-action="${a.id}" data-m1-action-record="${r.id}">${a.title} →</button><small>${a.id}</small><small><button type="button" class="text-button" data-m1-record="${r.id}">${r.id} →</button></small></td><td>${a.owner||'未提供'}<small>${a.due||'未提供'} · ${r.origin==='历史资料'?'历史期限':'源记录期限'}</small></td><td>${a.status}<small>尚无有效性确认及证据</small></td></tr>`;}).join('')}</tbody></table></div>`:`<div class="m2-empty"><h3>${reports?'当前范围无已知待复核报告':'当前范围无已知整改验证缺口'}</h3><p>仅描述已收到的资料；不代表所有报告已复核或所有整改已验证。</p></div>`}${m1MiMissing(reports?data.missingReports:data.missingActions,reports?'reports':'actions')}</section>`;
+}
+function m1OpenLatestReport(id){
+ if(id!==m1LiveId||!m1Ledger.has(id)||!m1LatestReport())return;
+ const latest=m1Live.reports.length-1;
+ if(m1Live.selectedReport!==latest)m1Live.reportChecks={facts:false,scope:false};
+ m1Live.selectedReport=latest;v3OpenRecord(id,'session','report');
+}
+function m1ShowAction(recordId,actionId){
+ const r=m1Ledger.get(recordId),a=r?.actions.find(x=>x.id===actionId);if(!a)return;
+ const live=r.id===m1LiveId,s=live?m1Live.snapshot:null,source=live?`${a.id} / COSY · ${s.version}`:`${a.source} / ${m1Sources[a.source]?.version||'未提供'}`;
+ openDetail(a.title,`${a.id} · 虚构整改措施`,`${live?m1SyncNotice():''}<dl class="m2-facts"><div><dt>关联事故</dt><dd>${r.id}</dd></div><div><dt>责任人 · 源记录</dt><dd>${a.owner||'未提供'}</dd></div><div><dt>期限 · 源记录</dt><dd>${a.due||'未提供'}</dd></div><div><dt>措施状态 · 源记录</dt><dd>${a.status}</dd></div><div><dt>来源 / 版本</dt><dd>${source}</dd></div><div><dt>整改有效性</dt><dd>${m1ActionVerified(a)?'已有有效性确认及证据':'尚无有效性确认及证据'}</dd></div></dl><div class="m2-callout"><strong>需补充的验证内容</strong><p>本示例未收到措施实施后的验证结果、证据引用与确认记录；需向措施 Owner 核对。</p><p>业务恢复验证只证明本次恢复，不证明长期整改有效。</p></div><p class="m2-note">${live?'处理与措施更新仍在 ServiceNow / COSY，本平台只展示同步快照。':'历史来源所载状态，不推断今日是否逾期或已完成。'}</p>${m1CoordSummary('coverage',r.id,a.id)}<div class="m2-actions">${m1CoordButton('coverage',r.id,a.id)}<button type="button" class="primary" data-m1-record="${r.id}">打开关联事故 →</button>${live?m1Btn('查看原工单快照','source-ticket'):m1Ref(a.source)}</div>`);
+}
 function renderM1MI(){
- const all=[...m1Ledger.values()],rows=all.filter(r=>(m1Ui.miSystem==='all'||r.system===m1Ui.miSystem)&&(m1Ui.miOrigin==='all'||r.origin===m1Ui.miOrigin));
+ const data=m1MiData(),rows=data.rows;
  const latest=m1LatestReport(),reportState=!latest?'未形成':m1ReportStale(latest)?'待重新复核':latest.reviewed?'模拟复核完成':'草稿待复核';
- return `<div class="m2-steps" aria-label="MI 数据范围">${m1Btn('原有 7–9 月示例','go-baseline')}<button type="button" aria-pressed="true">本次流程演练</button></div><div class="m2-toolbar"><div class="field"><label for="m1-mi-system">系统</label><select id="m1-mi-system">${m1Options({all:'全部系统',AMH:'AMH',HASE:'HASE'},m1Ui.miSystem)}</select></div><div class="field"><label for="m1-mi-origin">进入台账的路径</label><select id="m1-mi-origin">${m1Options({all:'全部路径','历史资料':'历史资料','新事故同步':'新事故同步'},m1Ui.miOrigin)}</select></div><span class="sub">历史 2025 年 + 新事故 2026-10-25 · 本页演练集合</span></div><p class="m2-count">含 1 起预置旧记录。只统计本页台账；不与原有 30 起示例相加，不用于全量趋势判断。</p>${m1Stats([['唯一事故',rows.length,'起'],['源状态处理中',rows.filter(r=>r.status==='处理中').length,'起'],['已恢复',rows.filter(r=>r.status==='已恢复').length,'起'],['RCA 待确认',rows.filter(r=>!r.confirmed).length,'起']])}<section class="panel"><div class="panel-head"><div><h2>从 MI 回到事故与证据</h2><p class="sub">${m1Live.snapshot?`新事故最近同步 ${m1Live.snapshot.synced} · ${m1Live.snapshot.coverage==='full'?'示例来源完整':'COSY 来源缺失'}${m1Live.syncStatus==='failed'?' · 本次同步失败，仅最后已知状态':''}`:'新事故尚未同步，不纳入已知事故数。'} 历史记录状态为原资料快照。</p></div></div><div class="table-scroll" tabindex="0" role="region" aria-label="演练事故台账"><table><thead><tr><th>事故 / 来源</th><th>系统 / 路径</th><th>源状态</th><th>根因 / RCA</th><th>INC 报告</th></tr></thead><tbody>${rows.map(r=>`<tr><td><button type="button" class="text-button" data-m1-record="${r.id}">${r.id} →</button><small>${r.sourceId} · ${r.version}</small></td><td>${r.system}<small>${r.origin}</small></td><td>${r.status}</td><td>${r.root||'未知'}<small>${r.confirmed?'已确认':'待确认'}</small></td><td>${r.id===m1LiveId?reportState:'历史资料，未生成本页报告'}</td></tr>`).join('')||'<tr><td colspan="5" class="empty">当前筛选无匹配事故；调整系统或路径查看。</td></tr>'}</tbody></table></div><div class="m2-actions">${m1Btn('历史整理与导入','go-history')}${m1Btn('事故同步与复盘','go-live')}${m1Btn('INC 报告','go-inc')}</div></section>`;
+ return `<div class="m2-steps" aria-label="MI 数据范围">${m1Btn('原有 7–9 月示例','go-baseline')}<button type="button" aria-pressed="true">本次流程演练</button></div><div class="m2-toolbar"><div class="field"><label for="m1-mi-system">系统</label><select id="m1-mi-system">${m1Options({all:'全部系统',AMH:'AMH',HASE:'HASE'},m1Ui.miSystem)}</select></div><div class="field"><label for="m1-mi-origin">进入台账的路径</label><select id="m1-mi-origin">${m1Options({all:'全部路径','历史资料':'历史资料','新事故同步':'新事故同步'},m1Ui.miOrigin)}</select></div><span class="sub">历史 2025 年 + 新事故 2026-10-25 · 本页演练集合</span></div><p class="m2-count">含 1 起预置旧记录。只统计本页台账；不与原有 30 起示例相加，不用于全量趋势判断。</p>${renderM1Attention(data)}${rows.some(r=>r.id===m1LiveId)&&(m1Live.syncStatus==='failed'||m1Live.snapshot?.coverage==='partial')?m1SyncNotice():''}${m1Stats([['唯一事故',rows.length,'起'],['源状态处理中',rows.filter(r=>r.status==='处理中').length,'起'],['已恢复',rows.filter(r=>r.status==='已恢复').length,'起'],['RCA 待确认',rows.filter(r=>!r.confirmed).length,'起']])}${v3Tabs([['followup','管理层跟进清单'],['all','事故台账']],m1Ui.miFocus,'data-m1-focus','演练 MI 查看内容')}${m1Ui.miFocus==='followup'?renderM1Followups(data):m1Ui.miFocus!=='all'?renderM1Queue(data):`<section class="panel"><div class="panel-head"><div><h2>从 MI 回到事故与证据</h2><p class="sub">${m1Live.snapshot?`新事故最近同步 ${m1Live.snapshot.synced} · ${m1Live.snapshot.coverage==='full'?'示例来源完整':'COSY 来源缺失'}${m1Live.syncStatus==='failed'?' · 本次同步失败，仅最后已知状态':''}`:'新事故尚未同步，不纳入已知事故数。'} 历史记录状态为原资料快照。</p></div></div><div class="table-scroll" tabindex="0" role="region" aria-label="演练事故台账"><table><thead><tr><th>事故 / 来源</th><th>系统 / 路径</th><th>源状态</th><th>根因 / RCA</th><th>INC 报告</th></tr></thead><tbody>${rows.map(r=>`<tr><td><button type="button" class="text-button" data-m1-record="${r.id}">${r.id} →</button><small>${r.sourceId} · ${r.version}</small></td><td>${r.system}<small>${r.origin}</small></td><td>${r.status}</td><td>${r.root||'未知'}<small>${r.confirmed?'已确认':'待确认'}</small></td><td>${r.id===m1LiveId?reportState:'历史资料，未生成本页报告'}</td></tr>`).join('')||'<tr><td colspan="5" class="empty">当前筛选无匹配事故；调整系统或路径查看。</td></tr>'}</tbody></table></div><div class="m2-actions">${m1Btn('历史整理与导入','go-history')}${m1Btn('事故同步与复盘','go-live')}${m1Btn('INC 报告','go-inc')}</div></section>`}`;
 }
 document.addEventListener('change',e=>{
  const id=e.target.id,v=e.target.value;
@@ -619,6 +727,12 @@ document.addEventListener('click',e=>{
  if(d.m1Source){m1ShowSource(d.m1Source);return;}
  if(d.m1Wiki){m1ShowWiki(d.m1Wiki);return;}
  if(d.m1Record){m1ShowRecord(d.m1Record);return;}
+ if(d.m1Focus&&['all','reports','actions','followup'].includes(d.m1Focus)){m1Ui.miFocus=d.m1Focus;renderM1();m1Focus(d.m1Focus==='all'?'m1-heading':d.m1Focus==='followup'?'m1-followup-heading':'m1-mi-queue-heading');return;}
+ if(d.m1ReportRecord){m1OpenLatestReport(d.m1ReportRecord);return;}
+ if(d.m1EvidenceRecord){v3OpenRecord(d.m1EvidenceRecord,'session','evidence');return;}
+ if(d.m1Coord){m1OpenCoord(d.m1Coord,d.coordRecord,d.coordAction||'');return;}
+ if(d.coordExample!==undefined){m1CoordExample();return;}
+ if(d.m1Action){m1ShowAction(d.m1ActionRecord,d.m1Action);return;}
  if(d.m1HistoryStep!==undefined){m1History.step=Number(d.m1HistoryStep);renderM1();m1Focus();return;}
  if(!d.m1)return;m1Ui.notice='';
  const routes={'go-history':'history','go-live':'live','go-inc':'inc','go-mi':'m1mi','go-baseline':'mi'};
@@ -670,7 +784,7 @@ function renderV3Records(){
  else if(v3.tab==='evidence')body=renderV3Evidence(r,baseline,live);
  else if(live)body=renderM1Live(false);
  else body=`<div class="m2-layout"><section class="panel"><h2>影响与恢复 · 源事实</h2><p>${baseline?r.impact:`历史资料记载：${r.title}。业务影响量未提供。`}</p><dl class="m2-facts"><div><dt>发生日期</dt><dd>${r.date}</dd></div><div><dt>恢复耗时</dt><dd>${r.minutes??'未知'} 分钟</dd></div></dl><h3>原因与复盘</h3><p>${r.confirmed?`原 RCA 已确认：${r.root}。${baseline?r.cause:'具体依据见来源与确认页签。'}`:'原来源未提供已确认 RCA，原因保持未知；本事故仍进入已知事故数。'}</p><button type="button" class="text-button" data-v3-record-tab="evidence">核对原文与确认依据 →</button><section class="m2-section"><h3>整改与验证</h3>${r.actions.map(a=>baseline?`<div class="action-item ${a.id===v3.action?'selected-action':''}"><div><strong>${a.title}</strong><p>${a.owner} · 期限 ${a.due||'未提供'}</p><p>${a.blocker||'未记录阻塞原因'} · ${validationText(a)}</p><button type="button" class="text-button" data-ticket="${a.id}">${a.ticket} · 查看原工单</button></div>${actionStatusBadge(a)}</div>`:`<div class="action-item"><div><strong>${a.title}</strong><p>${a.owner} · ${a.due} · ${a.status}</p><p>历史来源所载状态，不推断今日是否逾期或已完成。</p>${m1Ref(a.source)}</div></div>`).join('')||'<p class="quality-note">未收到整改资料，数量与有效性未知。</p>'}</section></section><aside class="m2-side"><h2>档案使用边界</h2><p>处理和措施状态引用原系统／历史记录，平台负责补证、复盘和报告版本。</p><p>恢复、RCA 确认与整改验证是三个独立判断。</p><button type="button" class="text-button" data-v3-record-tab="report">查看本事故报告状态 →</button></aside></div>`;
- return context+tabs+body;
+ return context+tabs+(!baseline?m1RecordCoord(r):'')+body;
 }
 function renderV3Evidence(r,baseline,live){
  const s=live?m1Live.snapshot:null;
@@ -706,10 +820,8 @@ document.addEventListener('change',e=>{if(e.target.id==='v3-record-scope'){v3.sc
 
 </script>
 <script id="mi-locale-data" type="application/json">
-{"sourceLocale":"zh-Hans","locales":{"zh-Hans":{"label":"简体中文","announcement":"语言已切换为简体中文"},
-"zh-Hant":{"label":"繁體中文","announcement":"語言已切換為繁體中文"},
-"en":{"label":"English","announcement":"Language switched to English"}},
-"messages":{"待":{"en":"Pending","zh-Hant":"待"},
+{"sourceLocale":"zh-Hans","locales":{"zh-Hans":{"label":"简体中文","announcement":"语言已切换为简体中文"},"zh-Hant":{"label":"繁體中文","announcement":"語言已切換為繁體中文"},"en":{"label":"English","announcement":"Language switched to English"}},"messages":{
+"待":{"en":"Pending","zh-Hant":"待"},
 "月":{"en":"month","zh-Hant":"月"},
 "条":{"en":"records","zh-Hant":"條"},
 "版":{"en":"versions","zh-Hant":"版"},
@@ -2152,7 +2264,152 @@ document.addEventListener('change',e=>{if(e.target.id==='v3-record-scope'){v3.sc
 "9 月":{"en":"Sep","zh-Hant":"9 月"},
 "讨论稿 · 可离线使用 · 无上传、发送或生产操作 · 仅保存语言偏好":{"en":"Discussion draft · Offline · No upload, sending or production actions · Language preference only is saved","zh-Hant":"討論稿 · 可離線使用 · 無上傳、發送或生產操作 · 僅保存語言偏好"},
 "MVP2 · 仅虚构预演 · 刷新恢复演练状态 · 仅保存语言偏好":{"en":"MVP2 · Fictional preview · Refresh resets workflow · Only language preference is saved","zh-Hant":"MVP2 · 僅虛構預演 · 刷新恢復演練狀態 · 僅保存語言偏好"},
-"按当前语言下载，保留本版来源和状态；未发送、未归档到原系统。":{"en":"Download in the selected language, retaining this version's sources and status; not sent or archived to source systems.","zh-Hant":"按當前語言下載，保留本版來源和狀態；未發送、未歸檔到原系統。"}}}
+"按当前语言下载，保留本版来源和状态；未发送、未归档到原系统。":{"en":"Download in the selected language, retaining this version's sources and status; not sent or archived to source systems.","zh-Hant":"按當前語言下載，保留本版來源和狀態；未發送、未歸檔到原系統。"},
+"来源已变化，需形成修订并重新复核":{"en":"Sources changed; create a revision and review again","zh-Hant":"來源已變化，需形成修訂並重新覆核"},
+"草稿仍有资料缺口，补齐后复核":{"en":"Draft has information gaps; complete them before review","zh-Hant":"草稿仍有資料缺口，補齊後覆核"},
+"最新草稿待人工复核":{"en":"Latest draft awaiting human review","zh-Hant":"最新草稿待人工覆核"},
+"报告未生成或未提供":{"en":"Reports not generated or not provided","zh-Hant":"報告未生成或未提供"},
+"整改资料未提供":{"en":"Remediation information not provided","zh-Hant":"整改資料未提供"},
+"未纳入待复核报告数；未提供不代表已复核，也不自动认定必须补写历史报告。":{"en":"Excluded from the pending report count. Missing reports do not imply completed review or an automatic requirement to write historical reports.","zh-Hant":"未納入待覆核報告數；未提供不代表已覆核，也不自動認定必須補寫歷史報告。"},
+"措施数量与有效性未知，未纳入已知措施缺口数；需要核对来源。":{"en":"Action count and effectiveness are unknown. Excluded from known action gaps; check the sources.","zh-Hant":"措施數量與有效性未知，未納入已知措施缺口數；需要核對來源。"},
+"本次演练管理关注事项":{"en":"Management priorities for this walkthrough","zh-Hant":"本次演練管理關注事項"},
+"待复核报告":{"en":"Reports awaiting review","zh-Hant":"待覆核報告"},
+"份最新报告":{"en":"latest reports","zh-Hant":"份最新報告"},
+"含未复核草稿与来源变化后待重审的报告；每起事故只计最新版。":{"en":"Includes unreviewed drafts and reports affected by source changes. Only the latest version per incident counts.","zh-Hant":"含未覆核草稿與來源變化後待重審的報告；每起事故只計最新版。"},
+"另有 {0} 起事故的报告未生成或未提供":{"en":"Separately: reports not generated or provided for {0} incidents","zh-Hant":"另有 {0} 起事故的報告未生成或未提供"},
+"查看报告与关联事故 →":{"en":"View reports and linked incidents →","zh-Hant":"查看報告與關聯事故 →"},
+"整改验证缺口":{"en":"Remediation validation gaps","zh-Hant":"整改驗證缺口"},
+"项已知措施":{"en":"known actions","zh-Hant":"項已知措施"},
+"已收到措施，但尚无有效性确认及证据；业务恢复与报告复核不消除此缺口。":{"en":"Recorded actions lack effectiveness confirmation and evidence. Service recovery and report review do not close these gaps.","zh-Hant":"已收到措施，但尚無有效性確認及證據；業務恢復與報告覆核不消除此缺口。"},
+"另有 {0} 起事故未提供整改资料，措施数量未知":{"en":"Separately: remediation information missing for {0} incidents; action count unknown","zh-Hant":"另有 {0} 起事故未提供整改資料，措施數量未知"},
+"查看措施、责任人与证据 →":{"en":"View actions, owners and evidence →","zh-Hant":"查看措施、責任人與證據 →"},
+"待复核报告清单":{"en":"Reports awaiting review","zh-Hant":"待覆核報告清單"},
+"整改验证缺口清单":{"en":"Actions with validation gaps","zh-Hant":"整改驗證缺口清單"},
+"每起事故仅展示最新待复核版本；旧版保留在事故报告中。":{"en":"Shows only the latest pending version per incident. Earlier versions remain in the incident report.","zh-Hant":"每起事故僅展示最新待覆核版本；舊版保留在事故報告中。"},
+"按已收到的措施逐项列出；历史状态仅代表原资料快照，不推断今日逾期。":{"en":"Lists recorded actions individually. Historical statuses reflect their source snapshots; current overdue status is not inferred.","zh-Hant":"按已收到的措施逐項列出；歷史狀態僅代表原資料快照，不推斷今日逾期。"},
+"返回全部事故":{"en":"Back to all incidents","zh-Hant":"返回全部事故"},
+"待复核报告明细":{"en":"Pending report details","zh-Hant":"待覆核報告明細"},
+"整改验证缺口明细":{"en":"Remediation validation gap details","zh-Hant":"整改驗證缺口明細"},
+"最新报告 / 事故":{"en":"Latest report / Incident","zh-Hant":"最新報告 / 事故"},
+"复核原因":{"en":"Reason for review","zh-Hant":"覆核原因"},
+"下一步":{"en":"Next step","zh-Hant":"下一步"},
+"责任人 / 期限":{"en":"Owner / Due date","zh-Hant":"責任人 / 期限"},
+"源状态 / 验证缺口":{"en":"Source status / Validation gap","zh-Hant":"源狀態 / 驗證缺口"},
+"打开最新报告 →":{"en":"Open latest report →","zh-Hant":"打開最新報告 →"},
+"历史期限":{"en":"Historical due date","zh-Hant":"歷史期限"},
+"源记录期限":{"en":"Due date from source","zh-Hant":"源記錄期限"},
+"尚无有效性确认及证据":{"en":"No effectiveness confirmation and evidence","zh-Hant":"尚無有效性確認及證據"},
+"当前范围无已知待复核报告":{"en":"No known reports awaiting review in this scope","zh-Hant":"當前範圍無已知待覆核報告"},
+"当前范围无已知整改验证缺口":{"en":"No known remediation validation gaps in this scope","zh-Hant":"當前範圍無已知整改驗證缺口"},
+"仅描述已收到的资料；不代表所有报告已复核或所有整改已验证。":{"en":"Describes received information only. It does not mean all reports are reviewed or all remediation is validated.","zh-Hant":"僅描述已收到的資料；不代表所有報告已覆核或所有整改已驗證。"},
+"虚构整改措施":{"en":"Fictional remediation action","zh-Hant":"虛構整改措施"},
+"责任人 · 源记录":{"en":"Owner · Source record","zh-Hant":"責任人 · 源記錄"},
+"期限 · 源记录":{"en":"Due date · Source record","zh-Hant":"期限 · 源記錄"},
+"措施状态 · 源记录":{"en":"Action status · Source record","zh-Hant":"措施狀態 · 源記錄"},
+"来源 / 版本":{"en":"Source / Version","zh-Hant":"來源 / 版本"},
+"已有有效性确认及证据":{"en":"Effectiveness confirmed with evidence","zh-Hant":"已有有效性確認及證據"},
+"需补充的验证内容":{"en":"Validation information to obtain","zh-Hant":"需補充的驗證內容"},
+"本示例未收到措施实施后的验证结果、证据引用与确认记录；需向措施 Owner 核对。":{"en":"This example has no post-implementation validation results, evidence references or confirmation record. Follow up with the action Owner.","zh-Hant":"本示例未收到措施實施後的驗證結果、證據引用與確認記錄；需向措施 Owner 核對。"},
+"业务恢复验证只证明本次恢复，不证明长期整改有效。":{"en":"Recovery validation confirms recovery for this incident; it does not establish long-term remediation effectiveness.","zh-Hant":"業務恢復驗證只證明本次恢復，不證明長期整改有效。"},
+"处理与措施更新仍在 ServiceNow / COSY，本平台只展示同步快照。":{"en":"Incident handling and action updates remain in ServiceNow / COSY. This platform displays synchronized snapshots.","zh-Hant":"處理與措施更新仍在 ServiceNow / COSY，本平台只展示同步快照。"},
+"打开关联事故 →":{"en":"Open linked incident →","zh-Hant":"打開關聯事故 →"},
+"关联事故":{"en":"Linked incident","zh-Hant":"關聯事故"},
+"报告复核":{"en":"Report review","zh-Hant":"報告覆核"},
+"核对最新 INC 报告":{"en":"Review the latest INC report","zh-Hant":"核對最新 INC 報告"},
+"示例报告 Owner F":{"en":"Sample report Owner F","zh-Hant":"示例報告 Owner F"},
+"页面预置复核角色，非实际派单":{"en":"Preloaded review role; no actual assignment","zh-Hant":"頁面預置覆核角色，非實際派單"},
+"建议协同：事故 Owner":{"en":"Suggested collaboration: incident Owner","zh-Hant":"建議協同：事故 Owner"},
+"本版时间线、RCA 与来源引用的核对记录；保留未知影响及未验证整改。":{"en":"Review records for this version's timeline, RCA and source references; retain unknown impact and unverified remediation.","zh-Hant":"本版時間線、RCA 與來源引用的核對記錄；保留未知影響及未驗證整改。"},
+"先按最新资料形成修订，再核对新版本；旧版复核不沿用。":{"en":"Create a revision from the latest materials, then review the new version. Earlier review does not carry over.","zh-Hant":"先按最新資料形成修訂，再核對新版本；舊版覆核不沿用。"},
+"核对最新草稿及保留的缺口，按报告流程完成本版复核。":{"en":"Check the latest draft and its stated gaps, then review this version through the report process.","zh-Hant":"核對最新草稿及保留的缺口，按報告流程完成本版覆核。"},
+"影响补证":{"en":"Impact evidence","zh-Hant":"影響補證"},
+"补齐业务影响依据":{"en":"Obtain business impact evidence","zh-Hant":"補齊業務影響依據"},
+"源工单处理负责人":{"en":"Incident handler from the source ticket","zh-Hant":"源工單處理負責人"},
+"建议协同：业务验证人 E":{"en":"Suggested collaboration: business verifier E","zh-Hant":"建議協同：業務驗證人 E"},
+"影响笔数、金额与统计口径未提供；恢复验证不等于影响量核实。":{"en":"Affected transaction count, amount and measurement definitions are missing. Recovery validation does not establish impact.","zh-Hant":"影響筆數、金額與統計口徑未提供；恢復驗證不等於影響量核實。"},
+"业务对账、影响对象、统计时段及来源引用；无法取得的内容明确保留未知。":{"en":"Business reconciliation, affected scope, measurement period and source references. Keep unavailable information explicitly unknown.","zh-Hant":"業務對賬、影響對象、統計時段及來源引用；無法取得的內容明確保留未知。"},
+"由事故 Owner 协调业务核对影响，并将依据关联到复盘和报告。":{"en":"The incident Owner should coordinate impact checks with the business and link evidence to the retrospective and report.","zh-Hant":"由事故 Owner 協調業務核對影響，並將依據關聯到復盤和報告。"},
+"措施验证":{"en":"Action validation","zh-Hant":"措施驗證"},
+"核对整改范围并补验证":{"en":"Check remediation scope and obtain validation","zh-Hant":"核對整改範圍並補驗證"},
+"核实历史措施现状与验证":{"en":"Check historical action status and validation","zh-Hant":"核實歷史措施現狀與驗證"},
+"措施 Owner · 源记录":{"en":"Action Owner · Source record","zh-Hant":"措施 Owner · 源記錄"},
+"来源未提供责任人依据":{"en":"No source evidence identifying an owner","zh-Hant":"來源未提供責任人依據"},
+"建议协同：SME":{"en":"Suggested collaboration: SME","zh-Hant":"建議協同：SME"},
+"建议协同：原事故 Owner":{"en":"Suggested collaboration: original incident Owner","zh-Hant":"建議協同：原事故 Owner"},
+"措施有效性确认及证据尚不齐备。":{"en":"Action effectiveness confirmation and evidence are incomplete.","zh-Hant":"措施有效性確認及證據尚不齊備。"},
+"建议补实施记录、容量或负载验证、依赖告警测试及观察结果，附版本、时间、证据引用与确认人。":{"en":"Suggested evidence: implementation records, capacity or load validation, dependency alert tests and observation results, with versions, timestamps, references and the confirming person.","zh-Hant":"建議補實施記錄、容量或負載驗證、依賴告警測試及觀察結果，附版本、時間、證據引用與確認人。"},
+"建议补实施记录、依赖检查测试及观察结果，附版本、时间、证据引用与确认人。":{"en":"Suggested evidence: implementation records, dependency check tests and observation results, with versions, timestamps, references and the confirming person.","zh-Hant":"建議補實施記錄、依賴檢查測試及觀察結果，附版本、時間、證據引用與確認人。"},
+"先取得最新措施状态；如已实施，再补验证依据。历史期限不能推断今日逾期。":{"en":"Obtain the latest action status first. If implemented, obtain validation evidence. Historical due dates do not establish current overdue status.","zh-Hant":"先取得最新措施狀態；如已實施，再補驗證依據。歷史期限不能推斷今日逾期。"},
+"先与 SME 核对措施是否覆盖容量主因，再约定验证标准与观察周期；名称本身不能证明覆盖充分。":{"en":"First check with the SME whether the action addresses the capacity root cause, then agree validation criteria and an observation period. The action name alone does not prove adequate coverage.","zh-Hant":"先與 SME 核對措施是否覆蓋容量主因，再約定驗證標準與觀察週期；名稱本身不能證明覆蓋充分。"},
+"与 SME 约定验证标准与观察周期，按源流程实施并保留验证记录。":{"en":"Agree validation criteria and an observation period with the SME; implement through the source process and retain validation records.","zh-Hant":"與 SME 約定驗證標準與觀察週期，按源流程實施並保留驗證記錄。"},
+"来源补齐":{"en":"Source information","zh-Hant":"來源補齊"},
+"核对尚未提供的整改资料":{"en":"Check missing remediation information","zh-Hant":"核對尚未提供的整改資料"},
+"建议资料整理负责人协调原事故 Owner":{"en":"Suggested coordination: materials coordinator with the original incident Owner","zh-Hant":"建議資料整理負責人協調原事故 Owner"},
+"未收到整改资料，措施数量与有效性未知；不判定为没有措施或措施未完成。":{"en":"Remediation information has not been received; action count and effectiveness are unknown. This does not establish that actions are absent or incomplete.","zh-Hant":"未收到整改資料，措施數量與有效性未知；不判定為沒有措施或措施未完成。"},
+"措施清单、Owner、期限、状态及来源版本；如已验证，附结果与确认依据。":{"en":"Action list, Owners, due dates, statuses and source versions. If validated, include results and confirmation evidence.","zh-Hant":"措施清單、Owner、期限、狀態及來源版本；如已驗證，附結果與確認依據。"},
+"先恢复 COSY 来源同步，再核对是否有遗漏措施；不以部分同步后的数量下降认定闭环。":{"en":"Restore COSY source sync first, then check for missing actions. A lower count after partial sync does not establish closure.","zh-Hant":"先恢復 COSY 來源同步，再核對是否有遺漏措施；不以部分同步後的數量下降認定閉環。"},
+"核对原系统或获准历史资料，确认是尚未收集、无法取得，还是已有明确的无措施依据。":{"en":"Check the source system or authorized historical materials to determine whether information is uncollected, unavailable, or explicitly confirms there are no actions.","zh-Hant":"核對原系統或獲准歷史資料，確認是尚未收集、無法取得，還是已有明確的無措施依據。"},
+"管理层跟进清单":{"en":"Management follow-up list","zh-Hant":"管理層跟進清單"},
+"{0} 项协调事项 · 同一事故可有多项，不作为事故数或措施数。":{"en":"Coordination items: {0}. An incident may have multiple items; this is not an incident or action count.","zh-Hant":"{0} 項協調事項 · 同一事故可有多項，不作為事故數或措施數。"},
+"虚构协调建议":{"en":"Fictional coordination suggestions","zh-Hant":"虛構協調建議"},
+"事故处理与措施更新仍在 ServiceNow / COSY；本清单展示来源状态、证据缺口和建议下一步，不派单或修改措施。":{"en":"Incident handling and action updates remain in ServiceNow / COSY. This list shows source statuses, evidence gaps and suggested next steps; it does not assign or modify actions.","zh-Hant":"事故處理與措施更新仍在 ServiceNow / COSY；本清單展示來源狀態、證據缺口和建議下一步，不派單或修改措施。"},
+"覆盖本次示例的报告复核、影响补证、措施验证和来源缺失；责任人依据与建议协同分别标注。":{"en":"Covers report review, impact evidence, action validation and missing sources in this example. Owner provenance and suggested collaborators are labeled separately.","zh-Hant":"覆蓋本次示例的報告覆核、影響補證、措施驗證和來源缺失；責任人依據與建議協同分別標注。"},
+"源措施状态：{0} · 源期限：{1} · {2}":{"en":"Source action status: {0} · Source due date: {1} · {2}","zh-Hant":"源措施狀態：{0} · 源期限：{1} · {2}"},
+"同步来源快照":{"en":"Synchronized source snapshot","zh-Hant":"同步來源快照"},
+"谁负责":{"en":"Who is responsible","zh-Hant":"誰負責"},
+"缺什么证据":{"en":"Evidence needed","zh-Hant":"缺甚麼證據"},
+"下一步做什么":{"en":"Next step","zh-Hant":"下一步做甚麼"},
+"查看对应措施 →":{"en":"View linked action →","zh-Hant":"查看對應措施 →"},
+"核对本事故来源 →":{"en":"Check incident sources →","zh-Hant":"核對本事故來源 →"},
+"当前筛选下无已知跟进事项":{"en":"No known follow-up items for these filters","zh-Hant":"當前篩選下無已知跟進事項"},
+"仅限本次演练已收到的资料，不代表所有事故均已闭环。":{"en":"Limited to information received in this walkthrough; this does not establish closure of all incidents.","zh-Hant":"僅限本次演練已收到的資料，不代表所有事故均已閉環。"},
+"事故台账":{"en":"Incident register","zh-Hant":"事故台賬"},
+"演练 MI 查看内容":{"en":"Walkthrough MI views","zh-Hant":"演練 MI 查看內容"},
+"待明确":{"en":"To be identified","zh-Hant":"待明確"},
+"证据不足":{"en":"Insufficient evidence","zh-Hant":"證據不足"},
+"部分覆盖":{"en":"Partial coverage","zh-Hant":"部分覆蓋"},
+"覆盖充分":{"en":"Sufficient coverage","zh-Hant":"覆蓋充分"},
+"示例 SME G":{"en":"Sample SME G","zh-Hant":"示例 SME G"},
+"示例 SME H":{"en":"Sample SME H","zh-Hant":"示例 SME H"},
+"示例查证牵头人 H":{"en":"Sample evidence coordinator H","zh-Hant":"示例查證牽頭人 H"},
+"示例查证牵头人 J":{"en":"Sample evidence coordinator J","zh-Hant":"示例查證牽頭人 J"},
+"记录／修订覆盖核对":{"en":"Record / revise coverage review","zh-Hant":"記錄／修訂覆蓋核對"},
+"记录／修订查证安排":{"en":"Record / revise evidence coordination","zh-Hant":"記錄／修訂查證安排"},
+"覆盖核对记录":{"en":"Coverage review record","zh-Hant":"覆蓋核對記錄"},
+"资料查证安排":{"en":"Evidence coordination plan","zh-Hant":"資料查證安排"},
+"来源已变化或无法核实，原记录保留，需重新核对。":{"en":"Sources changed or cannot be verified. The original record is retained and needs another review.","zh-Hant":"來源已變化或無法核實，原記錄保留，需重新核對。"},
+"已记录核对结论；不改变整改验证缺口或源措施状态。":{"en":"Review conclusion recorded; remediation validation gaps and source action status remain unchanged.","zh-Hant":"已記錄核對結論；不改變整改驗證缺口或源措施狀態。"},
+"已记录查证安排；措施 Owner 仍待明确，来源仍待补齐。":{"en":"Coordination plan recorded; the action Owner remains unidentified and source information is still missing.","zh-Hant":"已記錄查證安排；措施 Owner 仍待明確，來源仍待補齊。"},
+"已保存的演练版本":{"en":"Saved walkthrough versions","zh-Hant":"已保存的演練版本"},
+"模拟核对人":{"en":"Simulated reviewer","zh-Hant":"模擬核對人"},
+"覆盖核对结论":{"en":"Coverage review conclusion","zh-Hant":"覆蓋核對結論"},
+"核对依据与覆盖缺口":{"en":"Review rationale and coverage gaps","zh-Hant":"核對依據與覆蓋缺口"},
+"依据引用":{"en":"Evidence references","zh-Hant":"依據引用"},
+"下一步与验证安排":{"en":"Next steps and validation plan","zh-Hant":"下一步與驗證安排"},
+"资料查证牵头人":{"en":"Evidence coordinator","zh-Hant":"資料查證牽頭人"},
+"约定回复日期":{"en":"Agreed reply date","zh-Hant":"約定回復日期"},
+"查证范围":{"en":"Investigation scope","zh-Hant":"查證範圍"},
+"整改覆盖核对记录":{"en":"Remediation coverage review record","zh-Hant":"整改覆蓋核對記錄"},
+"资料查证牵头人与回复日期":{"en":"Evidence coordinator and reply date","zh-Hant":"資料查證牽頭人與回復日期"},
+"虚构本页记录":{"en":"Fictional page-local record","zh-Hant":"虛構本頁記錄"},
+"仅填写虚构内容，刷新清除。记录不发送、不派单；处理与措施更新仍在 ServiceNow / COSY。":{"en":"Enter fictional content only; refresh clears it. Records are not sent and no tickets are assigned. Handling and action updates remain in ServiceNow / COSY.","zh-Hant":"僅填寫虛構內容，刷新清除。記錄不發送、不派單；處理與措施更新仍在 ServiceNow / COSY。"},
+"覆盖充分不代表措施已实施或有效；不会清除整改验证缺口，也不审批 INC 报告。":{"en":"Sufficient coverage does not establish implementation or effectiveness. It does not clear remediation validation gaps or approve an INC report.","zh-Hant":"覆蓋充分不代表措施已實施或有效；不會清除整改驗證缺口，也不審批 INC 報告。"},
+"查证牵头人负责收集资料，不自动成为措施 Owner；回复日期不是措施到期日。":{"en":"The coordinator gathers information and does not automatically become the action Owner. The reply date is not the action due date.","zh-Hant":"查證牽頭人負責收集資料，不自動成為措施 Owner；回復日期不是措施到期日。"},
+"填入虚构示例":{"en":"Fill fictional example","zh-Hant":"填入虛構示例"},
+"请选择":{"en":"Please select","zh-Hant":"請選擇"},
+"保存演练记录":{"en":"Save walkthrough record","zh-Hant":"保存演練記錄"},
+"保存为新的本页版本，旧记录保留；重复保存相同内容不增加版本。关闭前未保存的内容不会保留，自填文字保留输入语言。":{"en":"Saves a new page-local version and retains earlier records. Identical saves do not create a version. Unsaved edits are discarded when closed; entered text stays in its original language.","zh-Hant":"保存為新的本頁版本，舊記錄保留；重復保存相同內容不增加版本。關閉前未保存的內容不會保留，自填文字保留輸入語言。"},
+"当前未收到对应措施，只能查看旧记录；补齐来源后再核对。":{"en":"The linked action is currently unavailable. Earlier records are read-only; restore source information before reviewing again.","zh-Hant":"當前未收到對應措施，只能查看舊記錄；補齊來源後再核對。"},
+"请重新打开记录入口。":{"en":"Please reopen the record editor.","zh-Hant":"請重新打開記錄入口。"},
+"来源已变化，请关闭并重新打开入口，核对后再保存。":{"en":"Sources changed. Close and reopen the editor, review the changes, then save.","zh-Hant":"來源已變化，請關閉並重新打開入口，核對後再保存。"},
+"当前同步状态无法支持核对，请补齐来源后再保存。":{"en":"The current sync status cannot support this review. Restore source information before saving.","zh-Hant":"當前同步狀態無法支持核對，請補齊來源後再保存。"},
+"请完整填写必填内容，每项最多 1200 字。":{"en":"Complete all required fields; each allows up to 1,200 characters.","zh-Hant":"請完整填寫必填內容，每項最多 1200 字。"},
+"请选择有效的示例角色和结论。":{"en":"Select a valid sample role and conclusion.","zh-Hant":"請選擇有效的示例角色和結論。"},
+"源 RCA 未确认，只能记录证据不足。":{"en":"The source RCA is unconfirmed; only an insufficient-evidence conclusion can be recorded.","zh-Hant":"源 RCA 未確認，只能記錄證據不足。"},
+"请选择示例牵头人并填写有效回复日期。":{"en":"Select a sample coordinator and enter a valid reply date.","zh-Hant":"請選擇示例牽頭人並填寫有效回復日期。"},
+"已保存本页演练记录；源工单与措施状态未改变。":{"en":"Walkthrough record saved on this page; source tickets and action statuses are unchanged.","zh-Hant":"已保存本頁演練記錄；源工單與措施狀態未改變。"},
+"本平台核对与查证记录":{"en":"Platform review and evidence coordination records","zh-Hant":"本平台核對與查證記錄"}
+}}
 </script>
 <script>
 // Presentation-only localisation. Canonical records, IDs, filters and report snapshots stay unchanged.
@@ -2210,6 +2467,7 @@ const miI18n = (() => {
     saved.output=translate(saved.source);
     if(locale==='en'&&parent.tagName==='SMALL'&&parent.previousSibling?.textContent.trim()==='1'){
       saved.output=saved.output.replace(/^(incidents|actions|records|versions|minutes)$/,unit=>unit.slice(0,-1));
+      saved.output=saved.output.replace(/^(latest reports|known actions)$/,unit=>unit.slice(0,-1));
     }
     if(node.nodeValue!==saved.output)node.nodeValue=saved.output;
     textSources.set(node,saved);
